@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mamawmail Technology</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    :root {
+      --primary-blue: #1e90ff;
+      --primary-orange: #ff8c00;
+      --accent-maroon: #800000;
+      --accent-teal: #008080;
+      --neutral-dark: #222222;
+      --neutral-light: #e6e6e6;
+    }
+    body { font-family: 'Roboto', sans-serif; background: var(--neutral-dark); color: var(--neutral-light); }
+    h1, h2, h3, button { font-family: 'Inter', sans-serif; }
+    .hero { position: relative; background: var(--primary-orange); }
+    .card { transition: transform 0.3s; border: 2px solid var(--accent-teal); }
+    .card:hover { transform: scale(1.05); background: var(--accent-maroon); }
+    .nav-link { color: var(--neutral-light); }
+    .nav-link:hover { color: var(--primary-orange); }
+    .btn-primary { background: var(--primary-blue); }
+    .btn-primary:hover { background: var(--accent-maroon); }
+    .btn-secondary { background: var(--primary-orange); }
+    .btn-secondary:hover { background: var(--accent-maroon); }
+    .icon { color: var(--primary-blue); }
+    .card:hover .icon { color: var(--primary-orange); }
+    #menu-toggle { display: none; }
+    #menu { display: flex; }
+    @media (max-width: 768px) {
+      #menu { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--neutral-dark); }
+      #menu.active { display: flex; }
+      #menu-toggle { display: block; }
+      .hero-text { top: 25%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-[var(--neutral-dark)] shadow-md z-10">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="index.html" class="text-2xl font-bold text-[var(--primary-blue)]">Mamawmail</a>
+      <!-- Menu Toggle (Mobile) -->
+      <button id="menu-toggle" class="md:hidden text-[var(--neutral-light)] focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <!-- Menu -->
+      <nav id="menu" class="md:flex space-x-4" aria-label="Main navigation">
+        <a href="about.html" class="nav-link px-2 py-1">About</a>
+        <a href="technology.html" class="nav-link px-2 py-1 font-bold">Technology</a>
+        <a href="animations.html" class="nav-link px-2 py-1">Animations</a>
+        <a href="models.html" class="nav-link px-2 py-1">Models</a>
+        <a href="testing.html" class="nav-link px-2 py-1">Testing</a>
+        <a href="get-involved.html" class="nav-link px-2 py-1">Get Involved</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="hero py-12 text-center">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-bold">Mamawmail Technology</h1>
+        <h2 class="text-2xl md:text-3xl mt-2">Decentralized, Secure, Resilient</h2>
+        <p class="mt-4 max-w-3xl mx-auto">Mamawmail leverages a serverless swarm architecture, AI-driven path optimization, and robust privacy mechanisms to deliver messages in disconnected environments with minimal latency.</p>
+      </div>
+    </section>
+
+    <!-- Technical Overview -->
+    <section class="py-12 px-4 bg-[var(--neutral-dark)]">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center">Technical Foundation</h2>
+        <p class="mt-4 max-w-3xl mx-auto">Mamawmail’s technology is built on a decentralized, serverless swarm that routes messages dynamically across devices. Using federated learning, our AI optimizes paths (targeting \( P_{\text{opt}} \to 1 \)), while features like <code>delete_after_read</code> ensure privacy, <code>hop_ack</code> confirms delivery, and <code>been_here</code> prevents redundant routing. Fractal propagation scales efficiently, making Mamawmail ideal for disaster zones and remote enterprises.</p>
+      </div>
+    </section>
+
+    <!-- Explore Technologies -->
+    <section class="py-12 px-4 bg-gray-800">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center">Explore Our Technologies</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          <a href="technology/decentralized.html" class="card bg-gray-700 p-6 rounded-lg text-center">
+            <i class="fas fa-network-wired text-2xl mb-2 icon"></i>
+            <h3 class="text-xl font-semibold">Decentralized Swarm</h3>
+            <p>Serverless design ensures resilience in low-connectivity environments.</p>
+          </a>
+          <a href="technology/privacy.html" class="card bg-gray-700 p-6 rounded-lg text-center">
+            <i class="fas fa-lock text-2xl mb-2 icon"></i>
+            <h3 class="text-xl font-semibold">Privacy First</h3>
+            <p>Messages are hashed, decrypted only at the destination, and deleted after delivery.</p>
+          </a>
+          <a href="technology/ai.html" class="card bg-gray-700 p-6 rounded-lg text-center">
+            <i class="fas fa-brain text-2xl mb-2 icon"></i>
+            <h3 class="text-xl font-semibold">AI-Driven Swarm</h3>
+            <p>Federated learning optimizes message paths for minimal latency.</p>
+          </a>
+          <a href="technology/fractal.html" class="card bg-gray-700 p-6 rounded-lg text-center">
+            <i class="fas fa-sitemap text-2xl mb-2 icon"></i>
+            <h3 class="text-xl font-semibold">Fractal Propagation</h3>
+            <p>Messages spread efficiently like tree branches across the swarm.</p>
+          </a>
+          <a href="technology/self-healing.html" class="card bg-gray-700 p-6 rounded-lg text-center">
+            <i class="fas fa-medkit text-2xl mb-2 icon"></i>
+            <h3 class="text-xl font-semibold">Self-Healing</h3>
+            <p>Dynamic rerouting ensures delivery despite offline devices.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-12 px-4 bg-[var(--neutral-dark)]">
+      <div class="container mx-auto">
+        <iframe src="assets/key-features.html" frameborder="0" class="w-full" style="height: 600px;" scrolling="no" id="key-features-iframe"></iframe>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 px-4 text-center bg-[var(--neutral-dark)]">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold">Join the Future of Messaging</h2>
+        <p class="mt-4 max-w-3xl mx-auto">Help build Mamawmail’s decentralized messaging platform. Contribute code or fund our MVP!</p>
+        <div class="mt-4 space-x-4">
+          <a href="get-involved.html" class="inline-block btn-secondary text-[var(--neutral-light)] px-6 py-3 rounded-lg">Fund the MVP</a>
+          <a href="https://github.com/juancarlosayeng/mamawmail" class="inline-block btn-primary text-[var(--neutral-light)] px-6 py-3 rounded-lg">Join the Swarm</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 px-4 bg-[var(--neutral-dark)] text-center">
+    <div class="container mx-auto">
+      <p>Contact: Eng Juan Carlos G. Ayeng, [Your Email] | GitHub: <a href="https://github.com/juancarlosayeng/mamawmail" class="text-[var(--primary-blue)] hover:text-[var(--primary-orange)]">juancarlosayeng/mamawmail</a> | Follow on X: <a href="https://x.com/your-handle" class="text-[var(--primary-blue)] hover:text-[var(--primary-orange)]">@your-handle</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    });
+
+    // Adjust iframe height via postMessage
+    window.addEventListener('message', (event) => {
+      if (event.data.height) {
+        const iframe = document.getElementById('key-features-iframe');
+        iframe.style.height = `${event.data.height}px`;
+      }
+    });
+
+    // Fallback: Trigger height adjustment on load and resize
+    window.addEventListener('load', () => {
+      const iframe = document.getElementById('key-features-iframe');
+      iframe.contentWindow.postMessage('getHeight', '*');
+    });
+    window.addEventListener('resize', () => {
+      const iframe = document.getElementById('key-features-iframe');
+      iframe.contentWindow.postMessage('getHeight', '*');
+    });
+  </script>
+</body>
+</html>
