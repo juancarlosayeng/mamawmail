@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mamawmail Scaling Models</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    :root {
+      --primary-blue: #1e90ff;
+      --primary-orange: #ff8c00;
+      --accent-maroon: #800000;
+      --accent-teal: #008080;
+      --neutral-dark: #222222;
+      --neutral-light: #e6e6e6;
+    }
+    body { font-family: 'Roboto', sans-serif; background: var(--neutral-dark); color: var(--neutral-light); }
+    h1, h2, h3, button { font-family: 'Inter', sans-serif; }
+    .hero { position: relative; background: var(--primary-orange); }
+    .card { transition: transform 0.3s; border: 2px solid var(--accent-teal); }
+    .card:hover { transform: scale(1.05); background: var(--accent-maroon); }
+    .nav-link { color: var(--neutral-light); }
+    .nav-link:hover { color: var(--primary-orange); }
+    .btn-primary { background: var(--primary-blue); }
+    .btn-primary:hover { background: var(--accent-maroon); }
+    .btn-secondary { background: var(--primary-orange); }
+    .btn-secondary:hover { background: var(--accent-maroon); }
+    .icon { color: var(--primary-blue); }
+    .card:hover .icon { color: var(--primary-orange); }
+    #menu-toggle { display: none; }
+    #menu { display: flex; }
+    @media (max-width: 768px) {
+      #menu { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--neutral-dark); }
+      #menu.active { display: flex; }
+      #menu-toggle { display: block; }
+      .hero-text { top: 25%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-[var(--neutral-dark)] shadow-md z-10">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="index.html" class="text-2xl font-bold text-[var(--primary-blue)]">Mamawmail</a>
+      <!-- Menu Toggle (Mobile) -->
+      <button id="menu-toggle" class="md:hidden text-[var(--neutral-light)] focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <!-- Menu -->
+      <nav id="menu" class="md:flex space-x-4" aria-label="Main navigation">
+        <a href="about.html" class="nav-link px-2 py-1">About</a>
+        <a href="technology.html" class="nav-link px-2 py-1">Technology</a>
+        <a href="animations.html" class="nav-link px-2 py-1">Animations</a>
+        <a href="models.html" class="nav-link px-2 py-1 font-bold">Models</a>
+        <a href="testing.html" class="nav-link px-2 py-1">Testing</a>
+        <a href="get-involved.html" class="nav-link px-2 py-1">Get Involved</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="hero py-12 text-center">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-bold">Mamawmail Scaling Models</h1>
+        <h2 class="text-2xl md:text-3xl mt-2">Efficient and Resilient</h2>
+        <p class="mt-4 max-w-3xl mx-auto">Mamawmail’s scaling models ensure efficient message delivery across devices, from single nodes to large swarms, in disconnected environments.</p>
+      </div>
+    </section>
+
+    <!-- Scaling Overview -->
+    <section class="py-12 px-4 bg-[var(--neutral-dark)]">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center">Scaling for Resilience</h2>
+        <p class="mt-4 max-w-3xl mx-auto">Mamawmail scales vertically by optimizing individual device performance (e.g., CPU, memory, AI routing algorithms) and horizontally by distributing messages across a decentralized swarm. Our fractal propagation achieves near-logarithmic complexity (\( O(\log n) \)) for efficient scaling, while features like <code>hop_ack</code> and <code>been_here</code> ensure reliable delivery in dynamic networks.</p>
+      </div>
+    </section>
+
+    <!-- Scaling Models -->
+    <section class="py-12 px-4 bg-gray-800">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center">Explore Scaling Models</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
+          <a href="models/vertical.html" class="card bg-gray-700 p-6 rounded-lg text-center">
+            <i class="fas fa-microchip text-2xl mb-2 icon"></i>
+            <h3 class="text-xl font-semibold">Vertical Scaling</h3>
+            <p>Optimizes individual device performance for efficient message processing and routing.</p>
+          </a>
+          <a href="models/horizontal.html" class="card bg-gray-700 p-6 rounded-lg text-center">
+            <i class="fas fa-sitemap text-2xl mb-2 icon"></i>
+            <h3 class="text-xl font-semibold">Horizontal Scaling</h3>
+            <p>Distributes messages across a swarm for scalable, resilient communication.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-12 px-4 bg-[var(--neutral-dark)]">
+      <div class="container mx-auto">
+        <iframe src="assets/key-features.html" frameborder="0" class="w-full" style="height: 600px;" scrolling="no" id="key-features-iframe"></iframe>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 px-4 text-center bg-[var(--neutral-dark)]">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold">Join the Future of Messaging</h2>
+        <p class="mt-4 max-w-3xl mx-auto">Help scale Mamawmail’s decentralized platform. Contribute code or fund our MVP!</p>
+        <div class="mt-4 space-x-4">
+          <a href="get-involved.html" class="inline-block btn-secondary text-[var(--neutral-light)] px-6 py-3 rounded-lg">Fund the MVP</a>
+          <a href="https://github.com/juancarlosayeng/mamawmail" class="inline-block btn-primary text-[var(--neutral-light)] px-6 py-3 rounded-lg">Join the Swarm</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 px-4 bg-[var(--neutral-dark)] text-center">
+    <div class="container mx-auto">
+      <p>Contact: Eng Juan Carlos G. Ayeng, [Your Email] | GitHub: <a href="https://github.com/juancarlosayeng/mamawmail" class="text-[var(--primary-blue)] hover:text-[var(--primary-orange)]">juancarlosayeng/mamawmail</a> | Follow on X: <a href="https://x.com/your-handle" class="text-[var(--primary-blue)] hover:text-[var(--primary-orange)]">@your-handle</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    });
+
+    // Adjust iframe height via postMessage
+    window.addEventListener('message', (event) => {
+      if (event.data.height) {
+        const iframe = document.getElementById('key-features-iframe');
+        iframe.style.height = `${event.data.height}px`;
+      }
+    });
+
+    // Fallback: Trigger height adjustment on load and resize
+    window.addEventListener('load', () => {
+      const iframe = document.getElementById('key-features-iframe');
+      iframe.contentWindow.postMessage('getHeight', '*');
+    });
+    window.addEventListener('resize', () => {
+      const iframe = document.getElementById('key-features-iframe');
+      iframe.contentWindow.postMessage('getHeight', '*');
+    });
+  </script>
+</body>
+</html>
