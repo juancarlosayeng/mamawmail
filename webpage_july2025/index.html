@@ -288,48 +288,112 @@
 								<h2 class="major">Mathematics</h2>
 								<span class="image main"><img src="images/underconstruction.png" alt="" /></span>
 								<h3 class="major">Vertical & Horizontal Singularities</h3>
-									<br><br><br>
+									<br>
 									<h4>Horizontal Singularity Summary</h4>
-									<p>
-									
-									
-								<!-- Saturation Summary Inserted -->
-<br><br>
-<strong>Routing Table Saturation Summary for a 10-Device Mamawmail pre-AI SWARM:</strong><br>
-<progress id="saturation-bar" max="90" value="0"></progress>
-<p id="path-count">Calculating...</p>
-<p id="countdown-message" style="margin-top: 1em; color:aqua"></p>
-<canvas id="networkCanvas" width="600" height="600"></canvas>
-<button onclick="restartFractalSimulation()">Replay Saturation Simulation</button>
+									<p>						
+								<!-- Saturation Singularity Summary -->
+										<p>In MAMAWMAIL, fractal propagation means each device sends a message to 3 unvisited devices per hop. A hop can happen up to a depth of 4. This ensures wide distribution while avoiding cycles or redundancy.</p>
+										<p>We want to identify how many <strong>unique message paths</strong> can be discovered from every device to all others, forming a saturated routing table. This includes multi-hop paths that traverse only unvisited devices at each hop.</p>
+										<p>The saturation point is reached when all pairs \((i, j)\) have at least one known path traversed through this fractal propagation rule:</p>
+										<p style="text-align: center; font-size: 1.2em; color:aqua;">
+										\[
+										\text{Total paths needed} \geq \sum_{i=1}^{N} \sum_{j=1, j \neq i}^{N} \text{Paths}_{i \rightarrow j}\quad \text{(all-hop, unvisited)}
+										\]
+										<br><br>
+										<strong>Routing Table Saturation Summary for a 10-Device Mamawmail pre-AI SWARM:</strong><br>
+										<progress id="saturation-bar" max="90" value="0"></progress>
+										<p id="path-count">Calculating...</p>
+										<p id="countdown-message" style="margin-top: 1em; color:aqua"></p>
+										<canvas id="networkCanvas" width="600" height="600"></canvas>
+										<button onclick="restartFractalSimulation()">Replay Saturation Simulation</button>
+
+										<table style="margin: 2em auto; border-collapse: collapse; text-align: center;">
+										  <caption style="font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em;">Theoretical Horizontal Saturation Points for Swarm Sizes</caption>
+										  <thead>
+											<tr style="background-color: #000;">
+											  <th style="padding: 0.5em 1em; border: 1px solid #ccc; color:aqua;">Number of Devices (N)</th>
+											  <th style="padding: 0.5em 1em; border: 1px solid #ccc; color:aqua;">Total Directed Paths (N × (N - 1))</th>
+											</tr>
+										  </thead>
+										  <tbody>
+											<tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">10</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">90</td></tr>
+											<tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">100</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">9,900</td></tr>
+											<tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">1,000</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">999,000</td></tr>
+											<tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">10,000</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">99,990,000</td></tr>
+										  </tbody>
+										</table>
+										<p style="text-align: center; color: aqua; max-width: 700px; margin: auto;">
+										  This table shows the total number of distinct sender→receiver routes required for full routing saturation in a pre-AI swarm.
+										  At this point, theoretical latency is minimized and message forwarding becomes purely deterministic.
+										</p>
+										<a href="#" class="center button small2">More</a>
+										<br><br> <br><hr><br><br><br>
+<!-- Vertical Singularity Summary -->
+<h4>Vertical Singularity Summary</h4>
+<p>
+  Vertical singularity refers to how many <strong>distinct message packets</strong> a single device must send to ensure
+  successful delivery to all other devices — even if <b>90%</b> of the swarm goes offline.
+</p>
+<p>
+  Unlike the horizontal case (which maps all paths between all pairs), this focuses on 
+  <b class="aquacolor">resilience by redundancy</b> for a <b>single sender</b> (Device 0).
+  The goal is to ensure every destination has multiple distinct paths that do not share critical middle relays.
+</p>
+<p style="text-align: center; font-size: 1.2em; color: aqua;">
+\[
+\text{Vertical Singularity: } \quad M \geq T \times R
+\]
+</p>
+<p style="text-align: center;">
+Where:
+<ul style="text-align: left; max-width: 650px; margin: auto; color: #ccc;">
+  <li><b>M</b> = Total Messages Sent</li>
+  <li><b>T</b> = Number of Target Devices</li>
+  <li><b>R</b> = Desired Redundant Paths per Target</li>
+</ul>
+</p>
+<p class="center saturation-note">
+  For a swarm of <b>10 devices</b>, with 9 targets and a goal of <b>10 distinct paths per target</b>, the sender must dispatch 
+  <b class="aquacolor">90 message packets</b>. This creates enough redundancy to tolerate massive node loss, 
+  ensuring delivery paths still exist even if <b class="aquacolor">90% of the swarm is offline</b>.
+</p>
+
+<canvas id="verticalCanvas" width="600" height="600" style="display:block; margin: 2em auto; border:1px solid #ccc;"></canvas>
+<p id="vertical-status" style="text-align: center; color: aqua;">Simulating vertical saturation...</p>
+<button onclick="restartVerticalSimulation()" style="display:block; margin: 1em auto;">Replay Vertical Singularity Simulation</button>
+
+
+
 
 <table style="margin: 2em auto; border-collapse: collapse; text-align: center;">
-  <caption style="font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em;">Theoretical Horizontal Saturation Points for Swarm Sizes</caption>
+  <caption style="font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em;">Theoretical Vertical Singularity Packets Needed</caption>
   <thead>
     <tr style="background-color: #000;">
-      <th style="padding: 0.5em 1em; border: 1px solid #ccc; color:aqua;">Number of Devices (N)</th>
-      <th style="padding: 0.5em 1em; border: 1px solid #ccc; color:aqua;">Total Directed Paths (N × (N - 1))</th>
+      <th style="padding: 0.5em 1em; border: 1px solid #ccc; color: aqua;">Target Devices (T)</th>
+      <th style="padding: 0.5em 1em; border: 1px solid #ccc; color: aqua;">Paths per Target (R)</th>
+      <th style="padding: 0.5em 1em; border: 1px solid #ccc; color: aqua;">Total Packets (M = T × R)</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">10</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">90</td></tr>
-    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">100</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">9,900</td></tr>
-    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">1,000</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">999,000</td></tr>
-    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">10,000</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">99,990,000</td></tr>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">9</td><td>1</td><td>9</td></tr>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">9</td><td>3</td><td>27</td></tr>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">9</td><td>10</td><td><b class="aquacolor">90</b></td></tr>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">9</td><td>20</td><td>180</td></tr>
   </tbody>
 </table>
+
 <p style="text-align: center; color: aqua; max-width: 700px; margin: auto;">
-  This table shows the total number of distinct sender→receiver routes required for full routing saturation in a pre-AI swarm.
-  At this point, theoretical latency is minimized and message forwarding becomes purely deterministic.
+  Once vertical singularity is reached, the sender can rely on <b>path diversity</b> for delivery — 
+  even in extreme outage scenarios. This defines Mamawmail’s guarantee of message resilience.
 </p>
-	
-									
+<a href="#" class="center button small2">More</a>
+
 									
 									
 									
 									</p>
 								<p></p>
-								<p></p>
-							<a href="#" class="center button small2">More</a>
+								<p></p>		
 							</article>
 
 					</div>
@@ -523,6 +587,103 @@ function restartFractalSimulation() {
 // Start on load
 simulateFractalSaturation();
 </script>
+
+<script>
+const vCanvas = document.getElementById("verticalCanvas");
+const vCtx = vCanvas.getContext("2d");
+const centerX = vCanvas.width / 2;
+const centerY = vCanvas.height / 2;
+const totalNodes = 10;
+const verticalFanout = 3;
+const verticalMaxHops = 4;
+const targetHitsRequired = 10;
+
+let vNodes = [], vEdges = [], vColors = [], vHits = {};
+
+function drawVerticalNetwork() {
+  vCtx.clearRect(0, 0, vCanvas.width, vCanvas.height);
+
+  for (let [from, to] of vEdges) {
+    vCtx.beginPath();
+    vCtx.moveTo(from.x, from.y);
+    vCtx.lineTo(to.x, to.y);
+    vCtx.strokeStyle = "rgba(52, 152, 219, 0.4)";
+    vCtx.lineWidth = 2;
+    vCtx.stroke();
+  }
+
+  for (let node of vNodes) {
+    vCtx.beginPath();
+    vCtx.arc(node.x, node.y, 10, 0, 2 * Math.PI);
+    vCtx.fillStyle = vColors[node.id] || "#1abc9c";
+    vCtx.fill();
+    vCtx.fillStyle = "white";
+    vCtx.font = "10px Arial";
+    vCtx.textAlign = "center";
+    vCtx.fillText(node.id, node.x, node.y + 3);
+  }
+}
+
+function simulateVerticalSingularity() {
+  vNodes = [];
+  vEdges = [];
+  vHits = {};
+  vColors = [];
+  const angleStep = (2 * Math.PI) / totalNodes;
+
+  for (let i = 0; i < totalNodes; i++) {
+    const angle = angleStep * i;
+    const r = i === 0 ? 0 : 220;
+    const x = centerX + r * Math.cos(angle);
+    const y = centerY + r * Math.sin(angle);
+    vNodes.push({ id: i, x, y });
+    vHits[i] = new Set();
+    vColors[i] = i === 0 ? "#e74c3c" : "#1abc9c";
+  }
+
+  let packetId = 0;
+
+  function step() {
+    if (Object.values(vHits).slice(1).every(set => set.size >= targetHitsRequired)) {
+      document.getElementById("vertical-status").innerHTML = "✅ <span style='color:aqua;'>Vertical Singularity reached: Every device has 10+ paths from origin</span>";
+      drawVerticalNetwork();
+      return;
+    }
+
+    const visited = new Set([0]);
+    let current = 0;
+    let path = [current];
+
+    for (let h = 0; h < verticalMaxHops; h++) {
+      const candidates = [];
+      for (let i = 1; i < totalNodes; i++) {
+        if (!visited.has(i)) candidates.push(i);
+      }
+
+      if (candidates.length === 0) break;
+      const next = candidates[Math.floor(Math.random() * candidates.length)];
+      visited.add(next);
+      vEdges.push([vNodes[current], vNodes[next]]);
+      vHits[next].add(packetId);
+      path.push(next);
+      current = next;
+    }
+
+    packetId++;
+    drawVerticalNetwork();
+    setTimeout(step, 50);
+  }
+
+  step();
+}
+
+function restartVerticalSimulation() {
+  simulateVerticalSingularity();
+}
+
+simulateVerticalSingularity();
+</script>
+
 
 
 	</body>
