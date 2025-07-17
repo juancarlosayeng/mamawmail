@@ -1,4 +1,19 @@
 # WHATS NEW?
+<br><br>
+July 18 2025<br>
+initial webpage design, ui and ux...ongoing
+<br>
+https://juancarlosayeng.github.io/mamawmail/
+<br>
+![Under Construction](webpage_july2025/images/underconstruction.png)
+<br><br>
+<p align="center">
+  <img src="webpage_july2025/images/3123.PNG" alt="Screenshot" width="52%">
+</p>
+
+
+
+<hr>
 July 13 2025
 
 > ## SUMMARY
