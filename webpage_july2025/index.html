@@ -18,6 +18,47 @@
 		<link rel="stylesheet" href="assets/css/main2.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<style>
+		canvas {
+      border: 1px solid #ccc;
+      margin-top: 1em;
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+	  width: 100%;
+    }
+    button {
+      margin-top: 1em;
+      padding: 8px 12px;
+      font-size: 14px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #results {
+      text-align: center;
+      margin-top: 1em;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    #results p {
+      margin: 0.5em 0;
+    }
+    #saturation-bar {
+      width: 100%;
+      height: 20px;
+      margin-top: 0.5em;
+    }
+  </style>
 	</head>
 	<body class="is-preload">
 
@@ -242,15 +283,52 @@
                 <a href="#" class="center button small2">More</a>
               </article>
 
-						<!-- Contact -->
+						<!-- Mathematics -->
 							<article id="Mathematics">
 								<h2 class="major">Mathematics</h2>
 								<span class="image main"><img src="images/underconstruction.png" alt="" /></span>
-                <h3 class="major">Vertical & Horizontal Singularities</h3>
-									<h4>Summary</h4>
+								<h3 class="major">Vertical & Horizontal Singularities</h3>
+									<h4>Horizontal Sinularity Summary</h4>
+									<p>
+									
+									
+								<!-- Saturation Summary Inserted -->
+<br><br>
+<strong>Routing Table Saturation Summary for a 10-Device Mamawmail pre-AI SWARM:</strong><br>
+<progress id="saturation-bar" max="90" value="0"></progress>
+<p id="path-count">Calculating...</p>
+<p id="countdown-message" style="margin-top: 1em; color:aqua"></p>
+<canvas id="networkCanvas" width="600" height="600"></canvas>
+<button onclick="restartFractalSimulation()">Replay Saturation Simulation</button>
+
+<table style="margin: 2em auto; border-collapse: collapse; text-align: center;">
+  <caption style="font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em;">Theoretical Horizontal Saturation Points for Swarm Sizes</caption>
+  <thead>
+    <tr style="background-color: #000;">
+      <th style="padding: 0.5em 1em; border: 1px solid #ccc; color:aqua;">Number of Devices (N)</th>
+      <th style="padding: 0.5em 1em; border: 1px solid #ccc; color:aqua;">Total Directed Paths (N × (N - 1))</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">10</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">90</td></tr>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">100</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">9,900</td></tr>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">1,000</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">999,000</td></tr>
+    <tr><td style="padding: 0.5em 1em; border: 1px solid #ccc;">10,000</td><td style="padding: 0.5em 1em; border: 1px solid #ccc;">99,990,000</td></tr>
+  </tbody>
+</table>
+<p style="text-align: center; color: aqua; max-width: 700px; margin: auto;">
+  This table shows the total number of distinct sender→receiver routes required for full routing saturation in a pre-AI swarm.
+  At this point, theoretical latency is minimized and message forwarding becomes purely deterministic.
+</p>
+	
+									
+									
+									
+									
+									</p>
 								<p></p>
-                <p></p>
-                <a href="#" class="center button small2">More</a>
+								<p></p>
+							<a href="#" class="center button small2">More</a>
 							</article>
 
 					</div>
@@ -333,6 +411,118 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/main2.js"></script>
+			<script>
+const canvas = document.getElementById("networkCanvas");
+const ctx = canvas.getContext("2d");
+const cx = canvas.width / 2;
+const cy = canvas.height / 2;
+const N = 10;
+const fanOut = 3;
+const maxHops = 4;
+let nodes = [];
+let edges = [];
+let nodeColors = [];
+const colorPalette = ["#e74c3c", "#3498db", "#f1c40f", "#2ecc71", "#9b59b6", "#1abc9c", "#e67e22", "#34495e", "#7f8c8d", "#ff69b4"];
+let pathSet = new Set();
+
+function drawNetwork() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let [from, to] of edges) {
+    ctx.beginPath();
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(to.x, to.y);
+    ctx.strokeStyle = nodeColors[from.id] || "rgba(0, 150, 0, 0.5)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+  for (let node of nodes) {
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, 10, 0, 2 * Math.PI);
+    ctx.fillStyle = nodeColors[node.id] || "#27ae60";
+    ctx.fill();
+    ctx.fillStyle = "white";
+    ctx.font = "10px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(node.id, node.x, node.y + 3);
+  }
+}
+
+function simulateFractalSaturation() {
+  const countdownEl = document.getElementById("countdown-message");
+  countdownEl.innerText = "Calculating routes...";
+  nodes = [];
+  edges = [];
+  pathSet.clear();
+
+  const angleStep = (2 * Math.PI) / N;
+  for (let i = 0; i < N; i++) {
+    const angle = angleStep * i;
+    nodes.push({ id: i, x: cx + 220 * Math.cos(angle), y: cy + 220 * Math.sin(angle) });
+    nodeColors[i] = colorPalette[i % colorPalette.length];
+  }
+
+  const total = N * (N - 1);
+  let currentOrigin = 0;
+  let queue = [];
+  let visited = new Set();
+
+  function step() {
+    if (queue.length === 0) {
+      if (currentOrigin >= N) {
+        document.getElementById("path-count").innerText = `Unique paths discovered (i → j): ${pathSet.size} / ${total} required`;
+        document.getElementById("saturation-bar").value = pathSet.size;
+        document.getElementById("saturation-bar").max = total;
+        countdownEl.innerText = pathSet.size === total
+          ? "✅ Saturation complete: All paths are known."
+          : `🕒 Waiting for saturation... (${pathSet.size}/${total} paths)`;
+        drawNetwork();
+        return;
+      }
+      visited = new Set([currentOrigin]);
+      queue = [[currentOrigin, [currentOrigin]]];
+      currentOrigin++;
+    }
+
+    const [current, path] = queue.shift();
+    if (path.length > maxHops + 1) {
+      step();
+      return;
+    }
+
+    const candidates = [];
+    for (let i = 0; i < N; i++) {
+      if (!visited.has(i)) candidates.push(i);
+    }
+    for (let i = 0; i < Math.min(fanOut, candidates.length); i++) {
+      const next = candidates.splice(Math.floor(Math.random() * candidates.length), 1)[0];
+      visited.add(next);
+      const newPath = [...path, next];
+      edges.push([nodes[current], nodes[next]]);
+      pathSet.add(`${path[0]}->${next}`);
+      queue.push([next, newPath]);
+    }
+
+    document.getElementById("path-count").innerText = `Unique paths discovered (i → j): ${pathSet.size} / ${total} required`;
+    document.getElementById("saturation-bar").value = pathSet.size;
+    countdownEl.innerText = pathSet.size === total
+      ? "✅ Saturation complete: All paths are known."
+      : `🕒 Waiting for saturation... (${pathSet.size}/${total} paths)`;
+
+    drawNetwork();
+    requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+function restartFractalSimulation() {
+  simulateFractalSaturation();
+}
+
+// Start on load
+simulateFractalSaturation();
+</script>
+
 
 	</body>
 </html>
