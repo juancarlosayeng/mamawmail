@@ -5,13 +5,14 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -24,6 +25,9 @@ jobs:
         run: |
           mkdir public
           cp -r webpage_july2025/* public/
+
+      - name: Override deprecated upload-artifact@v3
+        uses: actions/upload-artifact@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
