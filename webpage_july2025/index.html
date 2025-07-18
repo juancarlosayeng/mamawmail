@@ -869,21 +869,19 @@ onVisible('perHopCanvas', startPerHopAnimation);
 
 
 
- <div id="visitorCounter">Unique IP visitors: ...</div>
+ <div id="visitorCounter">Unique IP visitors: <span id="visitor-count">...</span></div>
 
 <script>
-fetch('/api/visitor-count')
+// Set your own unique namespace & key
+const namespace = 'mamawmail';
+const key = 'webpage_july2025';
+
+fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
   .then(res => res.json())
   .then(data => {
-    document.getElementById('visitorCounter').textContent =
-      'Unique IP visitors: ' + data.count;
-  })
-  .catch(() => {
-    document.getElementById('visitorCounter').textContent =
-      'Unique IP visitors: ?';
+    document.getElementById('visitor-count').textContent = data.value;
   });
 </script>
-
 
 
 
