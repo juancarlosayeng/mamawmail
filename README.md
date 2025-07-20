@@ -1,6 +1,66 @@
 # WHATS NEW?
-<br><br>
+
+<hr>
+# SUMMARY
+July 20 2025
+
+Fractal Macro AI + Fractal Micro AI [Multi-Level AI]
+> ### 1. Swarm-Level [System-Wide]
+> ### 2. Device-Level [Device AI]
+
+
+## A. Swarm-Level AI
+MAMAWMAIL's decentralized network doesn't rely on one central AI. Instead, intelligence emerges from a swarm of devices: Micro AI handles routing and trust per device, while Macro AI learns across the entire swarm to guide propagation, optimize delivery, and control fractal behavior.
+Monitors System of Devices, their info and knowledge of aggregated pathway lessons. Optimization for message success rate vs network load.
+
+This architecture merges local autonomy and global learning into a self-improving system.
+
+
+Swarm-Level AI can adjust:
+
+> #### 1. Propagation Radius;
+> #### 2. Max Fractal Hops per device, Start Singular Hops;
+> #### 3. Grouping/Clustering, and other macro-level management;
+
+
+## B. Device-Level AI
+MAMAWMAIL's Device-Level AI Agent on each device [mainly] a lightweight scoring function.
+Learns:
+
+> #### 1. Best neighbors for routing.
+> #### 2. Local traffic conditions. [Crawler AI]
+> #### 3. Success/failure of past hops.
+
+Output:
+> #### 1. Propagation Control: Crawler 'Been Here' Packet Acceptance/Rejection
+> #### 2. Transmit / Handoff Logic
+> #### 3. Retrieval, Incorporation of System Learned Pathways
+
+
+
+
+
+## AI Architecture Comparison: Gemini vs. MAMAWMAIL
+
+While Google Gemini AI powers centralized, cloud-based intelligence for search tasks, **MAMAWMAIL** operates on a radically different model — a decentralized swarm where intelligence is distributed. Here's a side-by-side breakdown of how each system handles core AI components:
+
+| **Component**       | **Google Gemini AI**                | **MAMAWMAIL AI Layer**                       |
+|---------------------|-------------------------------------|----------------------------------------------|
+| **Query Parsing**   | LLM on server                       | Micro AI classifies message priority         |
+| **Context Awareness**| Gemini contextualizes search       | Micro AI analyzes device context             |
+| **Synthesis**       | Gemini composes direct answer       | Macro AI guides swarm routing                |
+| **Learning Loop**   | Feedback from user queries          | Feedback from packet delivery stats          |
+
+In essence, **Gemini** operates as a cloud monolith with powerful but centralized intelligence. **MAMAWMAIL** flips the model: by embedding local learning into each node and coordinating behavior swarm-wide, it creates emergent intelligence without centralized servers.
+
+This shift from **cloud AI** to **edge-swarmed AI** marks a foundational innovation in decentralized messaging and infrastructure resilience.
+
+
+<hr>
+ 
+# Summary
 July 18 2025<br>
+
 initial webpage design, ui and ux...ongoing
 <br>
 https://juancarlosayeng.github.io/mamawmail/
