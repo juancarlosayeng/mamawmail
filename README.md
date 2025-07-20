@@ -1,10 +1,11 @@
 # WHATS NEW?
+<br>
+ 
 
-<hr>
-# SUMMARY
+## SUMMARY
 July 20 2025
 
-Fractal Macro AI + Fractal Micro AI [Multi-Level AI]
+# Fractal Macro AI + Fractal Micro AI [Multi-Level AI]
 > ### 1. Swarm-Level [System-Wide]
 > ### 2. Device-Level [Device AI]
 
