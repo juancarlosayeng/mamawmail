@@ -72,7 +72,67 @@
 	  border-radius: 10px;
 	  opacity: 0.85;
 	  z-index: 9999;
+    }	    
+    .macro-layer, .micro-layer {
+      border: 2px solid #00b4d8;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      position: relative;
     }
+
+    .macro-layer {
+      background: rgba(0, 180, 216, 0.1);
+    }
+
+    .micro-layer {
+      background: rgba(144, 224, 239, 0.05);
+    }
+
+    .arrow {
+      text-align: center;
+      font-size: 2em;
+      animation: pulse 1.5s infinite;
+      color: #48cae4;
+    }
+
+    @keyframes pulse {
+      0%   { transform: translateY(0); opacity: 0.6; }
+      50%  { transform: translateY(10px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.6; }
+    }
+
+    .nodes {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .node {
+      border: 1px solid #90e0ef;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      width: 140px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: 0.3s;
+    }
+
+    .node:hover {
+      background: rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+
+    .math {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #ffd166;
+    }	    
+    
   </style>
 	</head>
 	<body class="is-preload">
