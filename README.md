@@ -17,6 +17,76 @@ Focus of this release is on clean separation of modules, test coverage scaffoldi
 - Archived pre-alpha work in `core_archive/` (snapshot preserved: June 20, 2025).  
 - Introduced standardized headers across all `.py` files and test files.  
 
+```
+root/core/mamawmail/
+│
+├── orchestration/
+│   ├── __init__.py
+│   ├── workflow_controller.py        # Runs modules in sequence or parallel
+│   ├── config_loader.py               # Reads YAML/JSON configs
+│   ├── logging_monitor.py             # Unified log/metrics collector
+│   └── dev_launcher.py                # Test launcher for specific modules
+│
+├── message_architecture/
+│   ├── __init__.py
+│   ├── packet_builder.py               # Creates encrypted message packets
+│   ├── header_manager.py               # Handles addressing, 'been here' flags
+│   └── integrity_validator.py          # Ensures packet consistency
+│
+├── propagation/
+│   ├── __init__.py
+│   ├── fractal_propagator.py           # Intelligent Fractal Propagation logic
+│   ├── hop_manager.py                  # Manages multi-hop routing rules
+│   └── redundancy_optimizer.py         # Controls exponential spread vs efficiency
+│
+├── crawler/
+│   ├── __init__.py
+│   ├── device_discovery.py             # Finds candidate devices
+│   ├── candidate_scoring.py            # Scores for availability/reliability
+│   └── neighborhood_mapper.py          # Maps device clusters
+│
+├── ai_engine/
+│   ├── __init__.py
+│   ├── relay_score_predictor.py        # Predicts best relay nodes (ML)
+│   ├── anomaly_detector.py             # Flags strange traffic patterns
+│   └── learning_manager.py             # Manages retraining & models
+│
+├── adaptive_topology/
+│   ├── __init__.py
+│   ├── topology_optimizer.py           # Prunes, merges, balances links
+│   ├── topology_recovery.py            # Self-healing after disconnection
+│   └── topology_history.py             # Tracks changes over time
+│
+├── singularity_manager/
+│   ├── __init__.py
+│   ├── convergence_detector.py         # Detects swarm-level synchronization
+│   ├── singularity_resolver.py         # Decides actions when singularities occur
+│   └── stability_predictor.py          # Predicts likelihood of singularity events
+│
+├── privacy/
+│   ├── __init__.py
+│   ├── encryption_manager.py           # Handles E2E encryption logic
+│   ├── metadata_scrubber.py            # Removes identifying metadata
+│   └── key_rotation.py                 # Periodic key regeneration
+│
+└── tests/
+    ├── test_message_architecture.py
+    ├── test_propagation.py
+    ├── test_crawler.py
+    ├── test_ai_engine.py
+    ├── test_adaptive_topology.py
+    ├── test_singularity_manager.py
+    ├── test_privacy.py
+    └── test_orchestration.py
+```
+
+
+
+
+
+
+
+
 ### B. Testing Framework
 - Created `tests/` directory with unit test scaffolds for each subsystem.  
 - Added `tests/README.md` with clickable links to test files for evaluator navigation.  
