@@ -11,11 +11,43 @@ MAMAWMAIL enters **Alpha stage (v1.0)** with a restructured codebase, modular he
 Focus of this release is on clean separation of modules, test coverage scaffolding, and documentation consistency.
 
 ---
+<br><br>
+<br><br>
 
 ### A. Core Restructuring
 - Orchestration, propagation, AI, crawler, privacy, and singularity logic separated into clear submodules.  
 - Archived pre-alpha work in `core_archive/` (snapshot preserved: June 20, 2025).  
-- Introduced standardized headers across all `.py` files and test files.  
+- Introduced standardized headers across all `.py` files and test files.
+
+- **Seven Architectures (Prototype — In Progress; Last Updated: 2025-08-13)**
+
+1) **Message Architecture**  
+   Messages are structured in three modular parts:  
+   **Ephemeral Headers** (transit-only IDs) | **Path / AI Meta** (routing & scoring) | **Payload** (encrypted body for recipient only).
+
+2) **Propagation Architecture**  
+   Packets use a **fractal propagation pattern**. **Federated Learning** selects between  
+   **Fractal hops** (redundant, multi-branch) vs **Singular hops** (shortest optimal route).
+
+3) **Crawler Architecture**  
+   **Primary locator:** IP. **Fallbacks:** Bluetooth radio, UDP hole punching, and proximity discovery.
+
+4) **Intelligence Layer (AI) Architecture**  
+   Stores **success/failure routing patterns without payloads**; learns from behavior and shares intelligence with the swarm.
+
+5) **Self-Healing & Self-Pruning Architecture**  
+   On **successful handoff**, transient packets are deleted from non-destination nodes.  
+   If no known-good path exists, new paths are explored until one is found.
+
+6) **Singularity Architecture**  
+   **6A. Horizontal Singularity:** Map device-to-device paths to **maximize delivery** while **minimizing hops** (saturation when paths are fully mapped).  
+   **6B. Vertical Singularity:** Minimize **packet size/count** to achieve **lowest latency**; continually reduce **failure decay**.
+
+7) **Privacy Architecture**  
+   Payloads are **not required** for AI scoring/routing and remain **ephemeral** in transit.  
+   Decryption is possible **only** with the destination device’s matching hash.
+
+<br><br>   
 
 ```
 root/core/mamawmail/
