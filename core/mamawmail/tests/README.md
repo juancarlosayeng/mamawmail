@@ -45,8 +45,11 @@ crawler, AI scoring layer, and adaptive swarm logic behave as expected.
 
 ## 🔹 Usage
 
-Run all tests from the project root:  
+⚠️ **Notice (2025-08-16):**  
+Automated tests are not yet available in this alpha release.  
+The test suite directory and specifications are prepared, but execution scripts will be enabled in upcoming updates once the **core protocol stabilizes**.  
 
+Planned availability: **Beta Release (Q4 2025)**  
 ```bash
 pytest core/mamawmail/tests/ -v
 
