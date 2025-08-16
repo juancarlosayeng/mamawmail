@@ -1,47 +1,60 @@
-🌀 MAMAWMAIL Core — Pre-Alpha Snapshot
+#🌀 MAMAWMAIL Core — Pre-Alpha Snapshot
 
-Date: 2025-06-20
-Phase: Pre-Alpha (Exploratory Drafts)
+**Date: 2025-06-20
+**Phase: Pre-Alpha (Exploratory Drafts)
 
-🔹 Context
+##🔹 Context
 
 This archive contains the first experimental implementation of the MAMAWMAIL core logic.
 It was created before the formal Alpha v1.0 specification (2025-08-16) and is preserved here for historical and technical reference.
 
 At this stage, the design was unstructured and exploratory, testing ideas for:
-
-Relay management
-
-Swarm-level communication
-
-Return signal feedback
-
-Path scoring
+-Relay management
+-Swarm-level communication
+-Return signal feedback
+-Path scoring
 
 These drafts were not compatible with the Alpha baseline, but they mark the earliest technical thinking behind MAMAWMAIL.
 
-🔹 Archived Files
+##🔹 Archived Files
 
-feedback/return_signals.py
+1. `feedback/return_signals.py`
+    -Prototype for handling return acknowledgements in message hops.
 
-Prototype for handling return acknowledgements in message hops.
-
-ledger/path_scores.db
-
-Early test database for path scoring metrics. Schema was experimental.
-
-swarm_enginer/relay_manager.py
-
+2. `ledger/path_scores.db`
+    -Early test database for path scoring metrics. Schema was experimental.
+    -swarm_enginer/relay_manager.py
+3. `swarm_enginer/relay_manager.py`  
+   - First draft of a relay management engine.  
+   - Contained basic swarm-like logic for device hops.
+  
+   - 
 First attempt at a relay manager for swarm-like device hopping.
 
 🔹 Notes
 
-These files represent the pre-alpha exploratory phase.
+- These files represent the pre-alpha exploratory phase.
+- These files represent the **earliest thinking** on MAMAWMAIL’s relay system.  
 
 Superseded by:
 mamawmail/core/core_alpha_v1.0_2025_08_16.md
 
 Retained only as historical design artifacts.
+
+---
+
+## 🔹 Tests
+
+During this phase, no formal unit test framework was applied.  
+However, **manual prototype tests** were run to validate core behaviors:
+
+- **Return Signals**: Ensured that acknowledgements were sent back after message hops.  
+- **Path Scores**: Tested incremental updates of path scores in the SQLite draft database.  
+- **Relay Manager**: Simulated multiple device hops in a swarm, verifying message forwarding.  
+
+---
+
+
 
 ---------------------------------------------------------------------
 # Core Pre-Alpha Snapshot – June 20, 2025
@@ -64,5 +77,13 @@ It was created before the formal Alpha specification (2025-08-16) and is kept he
 - They are archived here to preserve the development history.  
 - The current active specification is:  
   `mamawmail/core/mamawmail/core_alpha_v1.0_2025_08_16.md`
+
+--------------------------------------------------------------------
+
+
+
+
+
+
 
 
