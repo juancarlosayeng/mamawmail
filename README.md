@@ -22,6 +22,37 @@ Focus of this release is on clean separation of modules, test coverage scaffoldi
 - Added `tests/README.md` with clickable links to test files for evaluator navigation.  
 - Ensures traceability: each test file maps to a corresponding module group.  
 
+
+⚠️ **Notice (2025-08-16):**  
+Automated execution of tests is **not yet available** in this alpha release.  
+The scaffolding is complete and ready, but execution scripts and CI integration will be delivered in **Beta (Q4 2025)**.  
+
+```bash
+pytest core/mamawmail/tests/ -v   # (Planned availability in Beta)
+
+-Tests are updated in parallel with core protocol modules.
+-Designed to support continuous integration (CI/CD) pipelines.
+-Some tests require mock relay peers and simulated swarm conditions.
+
+---
+
+## 🔹 Related Modules
+
+| Test File                          | Target Module(s)                          |
+|------------------------------------|-------------------------------------------|
+| `test_message_architecture.py`     | `message_architecture.py`                  |
+| `test_propagation.py`              | `propagation.py`, `relay_manager.py`       |
+| `test_crawler.py`                  | `crawler.py`, `device_manager.py`          |
+| `test_ai_engine.py`                | `ai_engine.py`, `scoring.py`               |
+| `test_adaptive_topology.py`        | `adaptive_topology.py`                     |
+| `test_singularity_manager.py`      | `singularity_manager.py`, `relay_manager.py` |
+| `test_privacy.py`                  | `privacy.py`, `encryption.py`              |
+| `test_orchestration.py`            | `orchestration.py`, integrates all modules |
+
+---
+
+```
+
 ### C. Documentation & Conventions
 - Added naming/versioning rules for major checkpoints (`core_alpha_v1.0_YYYY-MM-DD.md`).  
 - Defined release versioning scheme for evaluator clarity.  
