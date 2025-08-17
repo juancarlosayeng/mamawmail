@@ -1,8 +1,8 @@
 # WHATS NEW?
 <br>
+---
 
-
-#UDATE SUMMARY
+# UPDATE SUMMARY
 
 **August 17, 2025**  
 
@@ -42,7 +42,7 @@ All rights reserved.
 <br><br>
 <br><br>
 
-# UDATE SUMMARY
+# UPDATE SUMMARY
 
 **August 16, 2025**  
 
