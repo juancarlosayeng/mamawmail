@@ -1,5 +1,44 @@
 # WHATS NEW?
 <br>
+# UDATE SUMMARY
+
+**August 17, 2025**  
+
+MAMAWMAIL Dual License
+======================
+
+MAMAWMAIL and the Intelligent Fractal Propagation Protocol (IFPP) are licensed under a dual-license model:
+
+1. Community Edition
+   Licensed under the GNU Affero General Public License, Version 3 (AGPL-3.0).
+   You may use, modify, and distribute this software provided that:
+   - Source code is made available for all derivative works.
+   - Network-accessible versions of the software must also publish source code.
+   - Attribution to the original author ("Juan Carlos Ayeng / Red Kamatis Virtual Studios") must be preserved.
+See full license text below.
+
+2. Enterprise Edition
+   A **commercial license** is available for organizations that:
+   - Wish to build proprietary modules without releasing source code.
+   - Require enterprise support, advanced modules, or service-level agreements.
+   Please contact: jcgayeng@protonmail.com for details.
+
+---
+
+## Attribution and Integrity
+
+- No part of this project may be **relicensed, renamed, forked, or represented as an independent protocol** without proper attribution.  
+- The name **MAMAWMAIL** and **IFPP (Intelligent Fractal Propagation Protocol)** are trademarks of the author.  
+
+---
+
+MAMAWMAIL Enterprise License Agreement
+Copyright (C) 2025 Juan Carlos Ayeng
+All rights reserved.
+
+-------------------------------------------------
+<br><br>
+<br><br>
 
 # UDATE SUMMARY
 
