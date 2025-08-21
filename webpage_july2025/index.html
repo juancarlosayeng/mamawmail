@@ -128,49 +128,7 @@
 		      color: #ffd166;
 		    }	 
 	
-	        #navB > ul > li > ul,
-	        #navB > ul > li > ul > li > ul {
-	            display: none;
-	            max-height: 0;
-	            opacity: 0;
-	            overflow: hidden;
-	            transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-	            list-style-type: none;
-	            position: absolute;
-	            top: 100%;
-	            left: 0;
-	            margin-top: 0.5rem;
-	            width: 12rem;
-	            background-color: white;
-	            border-radius: 0.5rem;
-	            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-	            padding-top: 0.25rem;
-	            padding-bottom: 0.25rem;
-	            z-index: 10;
-	        }
-	        #navB > ul > li > ul > li > ul {
-	            top: 0;
-	            left: 100%;
-	        }	
-	        #navB > ul > li:hover > ul,
-	        #navB > ul > li > ul > li:hover > ul {
-	            display: block;
-	            max-height: 500px;
-	            opacity: 1;
-	        }
-	        #navB > ul > li {
-	            position: relative;
-	        }	
-	        #navB > ul > li > ul > li > a,
-	        #navB > ul > li > ul > li > ul > li > a {
-	            display: block;
-	            padding: 0.5rem 1rem;
-	            transition: background-color 0.2s;
-	        }	        
-	        #navB > ul > li > ul > li > a:hover,
-	        #navB > ul > li > ul > li > ul > li > a:hover {
-	            background-color: #f3f4f6;
-	        }
+
 		</style>
 </head>
 <body class="is-preload">
@@ -178,7 +136,7 @@
 	<div id="wrapper">									
 		<!-- Menu -->
 		<div id="navB">
-		        <nav>
+		        
 		            <ul>
 		                <!-- Home link -->
 		                <li>
@@ -229,7 +187,7 @@
 		                <li><a href="#">About</a></li>
 		                <li><a href="">Help Out</a></li>
 		            </ul>
-		        </nav>
+		       
 		</div>
 		<!-- Header -->
 		<header id="header">						
@@ -1127,6 +1085,7 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 	</body>
 </html>
+
 
 
 
