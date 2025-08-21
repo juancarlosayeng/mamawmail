@@ -126,13 +126,6 @@
 		      font-size: 1.2em;
 		      color: #ffd166;
 		    }	
-			.tab-contentX {
-	            display: none;
-	        }
-	
-	        .tab-contentX.active {
-	            display: block;
-	        }
 		</style>
 </head>
 <body class="is-preload">
@@ -357,19 +350,12 @@
 										<p></p>
 										<!--  Added : August 21, 2025 IFPP Section -->
 										<div class="w-full max-w-2xl bg-white rounded-xl shadow-xl overflow-hidden">        
-        									<!-- Tab navigation   -->
-									        <div id="tab-nav" class="flex p-2 bg-blue-500 rounded-t-xl overflow-x-auto">
-									            <!-- Tab 1 -->
-									            <button class="tab-button active flex-1 py-2 px-4 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-1" data-tab="tab1">
-									               I.F.P.P. Formal Description
-									            </button>
-									            <!-- Tab 2 -->
-									            <button class="tab-button flex-1 py-2 px-4 text-sm font-medium text-white transition-all duration-300 ease-in-out hover:bg-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-1" data-tab="tab2">
-									                I.F.P.P. Simplified Description
-									            </button>
-									        </div>									
+        									<!-- Tab navigation   -->								
 									        <!-- Content area -->
 									        <div id="tab-content-area" class="p-8">
+												<button class="tab-button active flex-1 py-2 px-4 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-1" data-tab="tab1">
+									               I.F.P.P. Formal Description
+									            </button>
 									            <!-- I.F.P.P. Formal Description -->
 									            <div id="tab1" class="tab-contentX active opacity-100 transition-opacity duration-500 ease-in">
 									                <h2 class="text-2xl font-bold mb-4 text-gray-800">Formal Description</h2>
@@ -387,7 +373,9 @@
 														<br>
 													</p>
 									            </div>
-									
+													<button class="tab-button flex-1 py-2 px-4 text-sm font-medium text-white transition-all duration-300 ease-in-out hover:bg-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-1" data-tab="tab2">
+										                I.F.P.P. Simplified Description
+										            </button>
 									            <!--  I.F.P.P. Simplified Description -->
 									            <div id="tab2" class="tab-contentX opacity-0 transition-opacity duration-500 ease-in">
 									                <h2 class="text-2xl font-bold mb-4 text-gray-800">Simplified Description</h2>
@@ -1144,6 +1132,7 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 	</body>
 </html>
+
 
 
 
