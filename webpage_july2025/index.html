@@ -133,6 +133,7 @@
 	
 			#navB > ul > li > ul,
 	        #navB > ul > li > ul > li > ul {
+				display: none;
 	            max-height: 0;
 	            opacity: 0;
 	            overflow: hidden;
@@ -141,7 +142,8 @@
 	        }	
 	        #navB > ul > li:hover > ul,
 	        #navB > ul > li > ul > li:hover > ul {
-	            max-height: 500px; 
+	            display: block; 
+				max-height: 500px; 
 	            opacity: 1;
 	        }
 	        #navB > ul > li > ul {
@@ -1101,6 +1103,7 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 	</body>
 </html>
+
 
 
 
