@@ -10,6 +10,7 @@
 	July 2025
 
 	NOTE: This site is under construction as well as the entire concepts are being redesigned or refined and elements are added on the fly. Code will be cleaned later, deadlinks deleted, and other coding standards.
+	UPDATE: August 21, 2025, Dixed layout and spacing. will later separate the scripts and css filess. adding IFPP section now.
 -->
 <html>
 	<head>
@@ -20,308 +21,295 @@
 		<link rel="stylesheet" href="assets/css/main2.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 		<style>
-		canvas {
-      border: 1px solid #ccc;
-      margin-top: 1em;
-      display: block;
-      margin-left: 0;
-      margin-right: 0;
-	  width: 100%;
-    }
-    button {
-      margin-top: 1em;
-      padding: 8px 12px;
-      font-size: 14px;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    button:hover {
-      background-color: #2980b9;
-    }
-    #results {
-      text-align: center;
-      margin-top: 1em;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-    #results p {
-      margin: 0.5em 0;
-    }
-    #saturation-bar {
-      width: 100%;
-      height: 20px;
-      margin-top: 0.5em;
-    }
-    #visitorCounter {
-	  position: fixed;
-	  bottom: 10px;
-	  right: 10px;
-	  background: #222;
-	  color: #fff;
-	  font-family: Arial, sans-serif;
-	  font-size: 12px;
-	  padding: 6px 12px;
-	  border-radius: 10px;
-	  opacity: 0.85;
-	  z-index: 9999;
-    }	    
-    .macro-layer, .micro-layer {
-      border: 2px solid #00b4d8;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 800px;
-      position: relative;
-    }
-
-    .macro-layer {
-      background: rgba(0, 180, 216, 0.1);
-    }
-
-    .micro-layer {
-      background: rgba(144, 224, 239, 0.05);
-    }
-
-    .arrow {
-      text-align: center;
-      font-size: 2em;
-      animation: pulse 1.5s infinite;
-      color: #48cae4;
-    }
-
-    @keyframes pulse {
-      0%   { transform: translateY(0); opacity: 0.6; }
-      50%  { transform: translateY(10px); opacity: 1; }
-      100% { transform: translateY(0); opacity: 0.6; }
-    }
-
-    .nodes {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .node {
-      border: 1px solid #90e0ef;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 10px;
-      width: 140px;
-      background: rgba(255, 255, 255, 0.05);
-      transition: 0.3s;
-    }
-
-    .node:hover {
-      background: rgba(255, 255, 255, 0.15);
-      cursor: pointer;
-      transform: scale(1.05);
-    }
-
-    .math {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 1.2em;
-      color: #ffd166;
-    }	    
-    
-  </style>
-	</head>
-	<body class="is-preload">
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-											
-				<!-- Menu -->
-						<div id="navB">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li>
-									<a href="#">The Swarm is the AI</a>
-																		<ul>
-										<li><a href="#">Message Architecture</a></li>
-										<li><a href="#"></a>Fractal Propagation Architecture</li>
-										<li><a href="#">Crawler Architecture</a>
-											<ul>
-												<li><a href="#">Regular IP</a></li>
-												<li><a href="#">Bluetooth Radio</a></li>
-												<li><a href="#">UDP Hole Punch</a></li>
-												
-											</ul>
-										</li>
-										<li><a href="#">Intelligence Layer Architecture</a></li>
-										<li>
-											
-										</li>
-										<li>
-											<a href="#">Self Healing/Pruning Architecture</a>
-											<ul>
-												<li><a href="#">Self Healing</a></li>
-												<li><a href="#">Self Pruning</a></li>
-												<li><a href="#"></a></li>
-												
-											</ul>
-										</li>
-										<li>
-											<a href="#">Singularity Architecture</a>										
-											<ul>
-												<li><a href="#">Failure Decay</a></li>
-												<li><a href="#">Horizontal Singularity</a></li>
-												<li><a href="#">Vertical Singularity</a></li>
-												
-											</ul>
-										</li>
-										<li><a href="#"></a>Privacy Architecture</li>
-										
-									</ul>
-								</li>
-								<li>
-									<a href="#">Models</a>
-
-								</li>
-								<li><a href=" "></a>About</li>
-								<li><a href="">Help Out</a></li>
-							</ul>
-						</div>
-				<!-- Header -->
-					<header id="header">
-						
-						<div class="logo" style="background-color:rgba(255,133,51,0.5);">
-							<span class=""><img src="images/logo4.png" style="width:3.5em; vertical-align: -webkit-baseline-middle; padding-bottom: 1.2rem; " alt="" /></span>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1 style="position: relative; left: 1.1ch; ">
-									<span style="color:aqua;">Mamaw</span>
-									<span style="color:#fff; position: relative; left: -0.68ch;">m</span>
-									<span style="color:#ff6f00; letter-spacing: 0.08em; position: relative; left: -1.5ch;">
-										<span style="
-										  position: relative;
-										  display: inline-block;
-										  padding: 0.1em 0.3em;
-										  border: 1px solid #ff8533;
-										  border-radius: 999px;
-										  color: #fff;
-										  background-color:#ff8533;
-										">
-										ai
-										</span>	
-									</span>
-									<span style="letter-spacing: 0.1em; position: relative; left: -1.8ch;">l</span>	
-								</h1>
-								<p>
-									Serverless. Uncensored Global <b style="color:aqua;">SWARM</b> Communication<br>
-									<h5 style="color:aqua;" id="subtitle">Decentralized 
-									<span style="color:#fff; background-color:rgba(255,133,51,.8);">AI-Assisted</span> 
-									Peer-to-Peer Messaging Protocol Using Fractal Propagation with Low Footprint  <br>& <b style="color:white;"> 
-									Complete Privacy</b></h5>	
-								</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#Architecture">Architecture</a></li>
-								<li><a href="#IFPP">IFPP</a></li>
-								<li><a href="#Technology">Technology</a></li>
-								<li><a href="#Mathematics">Mathematics</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
-
-					</header>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Architecture -->
-							<article id="Architecture">
-								<h3 class="major">Architecture</h3>	
-								<span class="image main"><img src="images/underconstruction.png" alt="" /></span>
-																<section>
-									<h3 class="major">7 Key Architectures</h3>
-									<h4>Summary</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Tech</th>
-													<th>Description</th>													
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Message Architecture</td>
-													<td>Message in 3 Modular Parts: <br> 
-                            <span class="aquacolor">Ephemeral Headers</span> | 
-                            <span class="aquacolor">Path/AI Meta</span> | 
-                            <span ><b class="aquacolor">Payload</b></span>
-                            <br>
-                          </td>  
-                            <td class="verticalMiddle"><a href="#" class="center button small2">More</a>
-                          </td>													
-												</tr>
-												<tr>
-													<td>Propagation Architecture</td>
-													<td>Message Packets are sent in a Fractal Pattern. 
-                            Federated Learning will determine 
-                              <b class="aquacolor">fractal hops</b> versus 
-                              <b class="aquacolor">singular hops.</b>
-                            <br> 
-                          </td>  
-                            <td class="verticalMiddle"><a href="#" class="center button small2">More</a>
-                          </td>                            
-												</tr>
-												<tr>
-													<td>Crawler Architecture</td>
-													<td>IP as Baseline, alternates to Bluetooth Radio or UDP Hole Punching.
-                            <br>
-                          </td>  
-                            <td class="verticalMiddle"><a href="#" class="center button small2">More</a>
-                          </td>													
-												</tr>
-												<tr>
-													<td>Intelligence Layer [AI] Architecture</td>
-													<td>Intelligence Layer Stores Success/Fail Paths 
-                              <b class="aquacolor">WITHOUT the PAYLOAD</b>
-                              , Learns and Shares to the swarm.
-                            <br>
-                          </td>  
-                            <td class="verticalMiddle"><a href="#" class="center button small2">More</a>
-                          </td>													
-												</tr>
-												<tr>
-													<td>Self-Healing | Self-Pruning Architecture</td>
-													<td>Every SUCCESSFUL HANDOFF, Packages are deleted in Transient, Non-Destination Devices, 
-                            Freeing Resources and Cleaning up.<br>
-                            If successful pathways are not available, new paths will be sought, until a recognized success path is taken.
-                            <br>
-                          </td>  
-                            <td class="verticalMiddle"><a href="#" class="center button small2">More</a>
-                          </td>													
-												</tr>
-                        <tr>
-													<td>Singularity Architecture</td>
-													<td>
-                              <b class="aquacolor">Horizontal Singularity</b><br>
-                              The MATHEMATICS for maximizing a successful delivery while minimizing device hops. 
-                              A saturation or singularity would be achieved when all paths between devices are mapped.
-                              <br><br>
-                              <b class="aquacolor">Vertical Singularity</b><br>
-                              The MATHEMATICS of minimum Message Packet units for Successful Delivery 
-                              until the lowest Latency is achieved. The system is built to always decrease FAILURE DECAY. 
-                            <br>
-                          </td>  
-                            <td class="verticalMiddle"><a href="#" class="center button small2">More</a>
-                          </td>													
-												</tr>
+			canvas {
+		      border: 1px solid #ccc;
+		      margin-top: 1em;
+		      display: block;
+		      margin-left: 0;
+		      margin-right: 0;
+			  width: 100%;
+		    }
+		    button {
+		      margin-top: 1em;
+		      padding: 8px 12px;
+		      font-size: 14px;
+		      background-color: #3498db;
+		      color: white;
+		      border: none;
+		      border-radius: 5px;
+		      cursor: pointer;
+		      display: block;
+		      margin-left: auto;
+		      margin-right: auto;
+		    }
+		    button:hover {
+		      background-color: #2980b9;
+		    }
+		    #results {
+		      text-align: center;
+		      margin-top: 1em;
+		      font-weight: bold;
+		      font-size: 1.1em;
+		    }
+		    #results p {
+		      margin: 0.5em 0;
+		    }
+		    #saturation-bar {
+		      width: 100%;
+		      height: 20px;
+		      margin-top: 0.5em;
+		    }
+		    #visitorCounter {
+			  position: fixed;
+			  bottom: 10px;
+			  right: 10px;
+			  background: #222;
+			  color: #fff;
+			  font-family: Arial, sans-serif;
+			  font-size: 12px;
+			  padding: 6px 12px;
+			  border-radius: 10px;
+			  opacity: 0.85;
+			  z-index: 9999;
+		    }	    
+		    .macro-layer, .micro-layer {
+		      border: 2px solid #00b4d8;
+		      border-radius: 12px;
+		      padding: 20px;
+		      margin: 20px auto;
+		      max-width: 800px;
+		      position: relative;
+		    }
+		    .macro-layer {
+		      background: rgba(0, 180, 216, 0.1);
+		    }
+		    .micro-layer {
+		      background: rgba(144, 224, 239, 0.05);
+		    }
+		    .arrow {
+		      text-align: center;
+		      font-size: 2em;
+		      animation: pulse 1.5s infinite;
+		      color: #48cae4;
+		    }
+		    @keyframes pulse {
+		      0%   { transform: translateY(0); opacity: 0.6; }
+		      50%  { transform: translateY(10px); opacity: 1; }
+		      100% { transform: translateY(0); opacity: 0.6; }
+		    }
+		    .nodes {
+		      display: flex;
+		      justify-content: space-around;
+		      flex-wrap: wrap;
+		      margin-top: 20px;
+		    }
+		    .node {
+		      border: 1px solid #90e0ef;
+		      padding: 10px;
+		      margin: 10px;
+		      border-radius: 10px;
+		      width: 140px;
+		      background: rgba(255, 255, 255, 0.05);
+		      transition: 0.3s;
+		    }
+		    .node:hover {
+		      background: rgba(255, 255, 255, 0.15);
+		      cursor: pointer;
+		      transform: scale(1.05);
+		    }
+		    .math {
+		      text-align: center;
+		      margin-top: 30px;
+		      font-size: 1.2em;
+		      color: #ffd166;
+		    }	
+		</style>
+</head>
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">									
+		<!-- Menu -->
+		<div id="navB">
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="#">The Swarm is the AI</a>
+					<ul>
+						<li><a href="#">Message Architecture</a></li>
+						<li><a href="#"></a>Fractal Propagation Architecture</li>
+						<li><a href="#">Crawler Architecture</a>
+					</ul>		
+					<ul>
+						<li><a href="#">Regular IP</a></li>
+						<li><a href="#">Bluetooth Radio</a></li>
+						<li><a href="#">UDP Hole Punch</a></li>							
+					</ul>
+				</li>
+				<li>
+					<a href="#">Intelligence Layer Architecture</a></li>
+					<li>											
+					</li>
+					<li>
+						<a href="#">Self Healing/Pruning Architecture</a>
+						<ul>
+							<li><a href="#">Self Healing</a></li>
+							<li><a href="#">Self Pruning</a></li>
+							<li><a href="#"></a></li>					
+						</ul>
+					</li>
+					<li>
+						<a href="#">Singularity Architecture</a>										
+						<ul>
+							<li><a href="#">Failure Decay</a></li>
+							<li><a href="#">Horizontal Singularity</a></li>
+							<li><a href="#">Vertical Singularity</a></li>								
+						</ul>
+					</li>
+					<li>
+						<a href="#"></a>Privacy Architecture
+					</li>
+				</li>
+				<li><a href="#">Models</a></li>
+				<li><a href=" ">About<</a></li>
+				<li><a href="">Help Out</a></li>
+			</ul>
+		</div>
+		<!-- Header -->
+		<header id="header">						
+			<div class="logo" style="background-color:rgba(255,133,51,0.5);">
+				<span class=""><img src="images/logo4.png" style="width:3.5em; vertical-align: -webkit-baseline-middle; padding-bottom: 1.2rem; " alt="" /></span>
+			</div>
+			<div class="content">
+				<div class="inner">
+					<h1 style="position: relative; left: 1.1ch; ">
+						<span style="color:aqua;">Mamaw</span>
+						<span style="color:#fff; position: relative; left: -0.68ch;">m</span>
+						<span style="color:#ff6f00; letter-spacing: 0.08em; position: relative; left: -1.5ch;">
+							<span style="
+								position: relative;
+								display: inline-block;
+								padding: 0.1em 0.3em;
+								border: 1px solid #ff8533;
+								border-radius: 999px;
+								color: #fff;
+								background-color:#ff8533;
+								">
+								ai
+							</span>	
+						</span>
+						<span style="letter-spacing: 0.1em; position: relative; left: -1.8ch;">l</span>	
+					</h1>
+					<p>
+						Serverless. Uncensored Global <b style="color:aqua;">SWARM</b> Communication
+						<br>
+						<h5 style="color:aqua;" id="subtitle">Decentralized 
+							<span style="color:#fff; background-color:rgba(255,133,51,.8);">AI-Assisted</span> 
+							Peer-to-Peer Messaging Protocol Using Fractal Propagation with Low Footprint  
+							<br>& 
+							<b style="color:white;">Complete Privacy</b>
+						</h5>	
+					</p>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="#Architecture">Architecture</a></li>
+					<li><a href="#IFPP">IFPP</a></li>
+					<li><a href="#Technology">Technology</a></li>
+					<li><a href="#Mathematics">Mathematics</a></li>
+					<!--<li><a href="#elements">Elements</a></li>-->
+				</ul>
+			</nav>
+		</header>
+		<!-- Main -->
+		<div id="main">
+			<!-- Architecture -->
+			<article id="Architecture">
+					<h3 class="major">Architecture</h3>	
+					<span class="image main"><img src="images/underconstruction.png" alt="" /></span>
+				<section>
+					<h3 class="major">7 Key Architectures</h3>
+					<h4>Summary</h4>
+					<div class="table-wrapper">
+						<table>
+							<thead>
+								<tr>
+									<th>Tech</th>
+									<th>Description</th>													
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Message Architecture</td>
+									<td>Message in 3 Modular Parts: <br> 
+                            			<span class="aquacolor">Ephemeral Headers</span> | <span class="aquacolor">Path/AI Meta</span> | <span ><b class="aquacolor">Payload</b></span>
+                            			<br>
+                          			</td>  
+                            		<td class="verticalMiddle">
+										<a href="#" class="center button small2">More</a>
+                          			</td>													
+								</tr>
+								<tr>
+									<td>Propagation Architecture</td>
+									<td>
+										Message Packets are sent in a Fractal Pattern. Federated Learning will determine <b class="aquacolor">fractal hops</b> versus <b class="aquacolor">singular hops.</b>
+                            			<br> 
+                          			</td>  
+                            		<td class="verticalMiddle">
+										<a href="#" class="center button small2">More</a>
+                          			</td>                            
+								</tr>
+								<tr>
+									<td>Crawler Architecture</td>
+									<td>IP as Baseline, alternates to Bluetooth Radio or UDP Hole Punching.
+                            			<br>
+                          			</td>  
+                            		<td class="verticalMiddle">
+										<a href="#" class="center button small2">More</a>
+                          			</td>													
+								</tr>
+								<tr>
+									<td>Intelligence Layer [AI] Architecture</td>
+									<td>
+										Intelligence Layer Stores Success/Fail Paths <b class="aquacolor">WITHOUT the PAYLOAD</b> , Learns and Shares to the swarm.
+                            			<br>
+                          			</td>  
+                            		<td class="verticalMiddle">
+										<a href="#" class="center button small2">More</a>
+                          			</td>													
+								</tr>
+								<tr>
+									<td>Self-Healing | Self-Pruning Architecture</td>
+									<td>Every SUCCESSFUL HANDOFF, Packages are deleted in Transient, Non-Destination Devices, Freeing Resources and Cleaning up.
+										<br>
+                            			If successful pathways are not available, new paths will be sought, until a recognized success path is taken.
+                            			<br>
+                          			</td>  
+                            		<td class="verticalMiddle">
+										<a href="#" class="center button small2">More</a>
+                          			</td>													
+								</tr>
+                        		<tr>
+									<td>Singularity Architecture</td>
+									<td>
+                              			<b class="aquacolor">Horizontal Singularity</b>
+										<br>
+                              			The MATHEMATICS for maximizing a successful delivery while minimizing device hops. A saturation or singularity would be achieved when all paths between devices are mapped.
+                              			<br>
+										<br>
+                              			<b class="aquacolor">Vertical Singularity</b>
+										<br>
+	                              		The MATHEMATICS of minimum Message Packet units for Successful Delivery until the lowest Latency is achieved. The system is built to always decrease FAILURE DECAY. 
+                            			<br>
+                          			</td>  
+                            		<td class="verticalMiddle">
+										<a href="#" class="center button small2">More</a>
+                          			</td>													
+								</tr>
                         		<tr>
 									td>Privacy Architecture</td>
 									<td>
@@ -1054,4 +1042,5 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 	</body>
 </html>
+
 
