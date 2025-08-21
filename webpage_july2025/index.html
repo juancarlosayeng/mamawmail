@@ -126,7 +126,21 @@
 		      font-size: 1.2em;
 		      color: #ffd166;
 		    }	 
+			#navB > ul > li > ul,
+	        #navB > ul > li > ul > li > ul {
+	            display: none;
+	            opacity: 0;
+	            transform: translateY(-10px);
+	            transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+	            list-style-type: none; /* Removes bullet points */
+	        }
 	
+	        #navB > ul > li:hover > ul,
+	        #navB > ul > li > ul > li:hover > ul {
+	            display: block;
+	            opacity: 1;
+	            transform: translateY(0);
+	        }
 
 		</style>
 </head>
@@ -134,41 +148,31 @@
 	<!-- Wrapper -->
 	<div id="wrapper">									
 		<!-- Menu -->
-		<div id="navB">
-		        
-		            <ul>
-		                <!-- Home link -->
+		<div id="navB">		        
+		            <ul>		                
 		                <li>
 		                    <a href="#">Home</a>
 		                </li>
-		                
-		                <!-- The Swarm is the AI dropdown -->
 		                <li>
-		                    <a href="#">The Swarm is the AI</a>
-		                    <!-- Sub-menu for The Swarm -->
+		                    <a href="#">The Swarm is the AI</a>		                    
 		                    <ul>
 		                        <li><a href="#">Message Architecture</a></li>
 		                        <li><a href="#">Fractal Propagation Architecture</a></li>
 		                        <li><a href="#">Crawler Architecture</a></li>
 		                    </ul>
 		                </li>
-		                
-		                <!-- Intelligence Layer Architecture dropdown -->
 		                <li>
-		                    <a href="#" style="font-weight: bold;">Intelligence Layer Architecture</a>
-		                    <!-- Corrected sub-menu for Intelligence Layer -->
+		                    <a href="#" style="font-weight: bold;">Intelligence Layer Architecture</a>		                    
 		                    <ul>
 		                        <li>
-		                            <a href="#">Self Healing/Pruning Architecture</a>
-		                            <!-- Nested sub-menu -->
+		                            <a href="#">Self Healing/Pruning Architecture</a>		                           
 		                            <ul>
 		                                <li><a href="#">Self Healing</a></li>
 		                                <li><a href="#">Self Pruning</a></li>
 		                            </ul>
 		                        </li>
 		                        <li>
-		                            <a href="#">Singularity Architecture</a>
-		                            <!-- Nested sub-menu -->
+		                            <a href="#">Singularity Architecture</a>		                          
 		                            <ul>
 		                                <li><a href="#">Failure Decay</a></li>
 		                                <li><a href="#">Horizontal Singularity</a></li>
@@ -180,13 +184,10 @@
 		                        </li>
 		                    </ul>
 		                </li>
-		                
-		                <!-- Other main navigation items -->
 		                <li><a href="#">Models</a></li>
 		                <li><a href="#">About</a></li>
 		                <li><a href="">Help Out</a></li>
-		            </ul>
-		       
+		            </ul>		       
 		</div>
 		<!-- Header -->
 		<header id="header">						
@@ -1084,6 +1085,7 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 	</body>
 </html>
+
 
 
 
