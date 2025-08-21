@@ -130,11 +130,20 @@
             	display: none;
 	        }
 	
-	        #navB > ul > li:hover > ul {
-	            display: block;
-	        }	        
+			#navB > ul > li > ul,
+	        #navB > ul > li > ul > li > ul {
+	            display: none;
+	            opacity: 0;
+	            transform: translateY(-10px);
+	            transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+	            list-style-type: none; /* Removes bullet points */
+	        }
+	
+	        #navB > ul > li:hover > ul,
 	        #navB > ul > li > ul > li:hover > ul {
 	            display: block;
+	            opacity: 1;
+	            transform: translateY(0);
 	        }
 		</style>
 </head>
@@ -354,7 +363,7 @@
 								<h2 class="major">IFPP</h2>
 								<span class="image main"><img src="images/underconstruction.png" alt="" /></span>
                 				<h3 class="major">Intelligent Fractal Propagation Protocol</h3>
-									<h4>Summary</h4>
+									<!-- <h4>Summary</h4>  -->
 											<br><br><br>
 											 <div id="tab-content-area" class="p-8">												
 									            <!-- I.F.P.P. Formal Description -->
@@ -1083,6 +1092,7 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 	</body>
 </html>
+
 
 
 
