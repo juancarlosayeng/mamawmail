@@ -347,6 +347,55 @@
                 				<h3 class="major">Intelligent Fractal Propagation Protocol</h3>
 									<h4>Summary</h4>
 										<p></p>
+										<!--  Added : August 21, 2025 IFPP Section -->
+										<div class="w-full max-w-2xl bg-white rounded-xl shadow-xl overflow-hidden">        
+        									<!-- Tab navigation bar on top -->
+									        <div id="tab-nav" class="flex p-2 bg-blue-500 rounded-t-xl overflow-x-auto">
+									            <!-- Tab 1 -->
+									            <button class="tab-button active flex-1 py-2 px-4 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-1" data-tab="tab1">
+									                About
+									            </button>
+									            <!-- Tab 2 -->
+									            <button class="tab-button flex-1 py-2 px-4 text-sm font-medium text-white transition-all duration-300 ease-in-out hover:bg-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-1" data-tab="tab2">
+									                Services
+									            </button>
+									            <!-- Tab 3 -->
+									            <button class="tab-button flex-1 py-2 px-4 text-sm font-medium text-white transition-all duration-300 ease-in-out hover:bg-blue-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 mx-1" data-tab="tab3">
+									                Contact
+									            </button>
+									        </div>
+									
+									        <!-- Content area -->
+									        <div id="tab-content-area" class="p-8">
+									            <!-- Tab 1 Content: Initially active and visible -->
+									            <div id="tab1" class="tab-content active opacity-100 transition-opacity duration-500 ease-in">
+									                <h2 class="text-2xl font-bold mb-4 text-gray-800">About Our Company</h2>
+									                <p class="text-gray-600">
+									                    We are dedicated to providing innovative solutions and services to our clients. Our team of experts works tirelessly to deliver high-quality results that exceed expectations. We believe in collaboration and continuous improvement to stay ahead in a dynamic market.
+									                </p>
+									            </div>
+									
+									            <!-- Tab 2 Content: Initially hidden -->
+									            <div id="tab2" class="tab-content opacity-0 transition-opacity duration-500 ease-in">
+									                <h2 class="text-2xl font-bold mb-4 text-gray-800">Our Services</h2>
+									                <ul class="list-disc list-inside text-gray-600">
+									                    <li>Web Development & Design</li>
+									                    <li>Mobile Application Creation</li>
+									                    <li>Digital Marketing Strategies</li>
+									                    <li>Cloud Computing Solutions</li>
+									                    <li>Data Analysis & Insights</li>
+									                </ul>
+									            </div>
+									
+									            <!-- Tab 3 Content: Initially hidden -->
+									            <div id="tab3" class="tab-content opacity-0 transition-opacity duration-500 ease-in">
+									                <h2 class="text-2xl font-bold mb-4 text-gray-800">Get in Touch</h2>
+									                <p class="text-gray-600">
+									                    Feel free to reach out to us with any questions or inquiries. You can contact us via email at <a href="#" class="text-blue-500 hover:underline">info@example.com</a> or call us at (123) 456-7890. We look forward to hearing from you!
+									                </p>
+									            </div>
+									        </div>
+									    </div>
 								
                 						<p></p>
                 				<a href="#" class="center button small2">More</a>
@@ -1029,8 +1078,61 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 
 
+<!--  IFPP Tab Script. Added August 21, 2025  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabNav = document.getElementById('tab-nav');
+            const contentArea = document.getElementById('tab-content-area');
+
+            // Add a click event listener to the parent container to handle all button clicks
+            tabNav.addEventListener('click', (event) => {
+                // Find the closest button element that was clicked
+                const clickedButton = event.target.closest('.tab-button');
+                
+                // If a button was clicked
+                if (clickedButton) {
+                    const tabId = clickedButton.dataset.tab;
+
+                    // Deactivate all tab buttons
+                    document.querySelectorAll('.tab-button').forEach(button => {
+                        button.classList.remove('active', 'bg-blue-600', 'shadow-md');
+                    });
+
+                    // Deactivate all content sections (hide and set opacity to 0)
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active', 'opacity-100');
+                        content.classList.add('opacity-0');
+                    });
+
+                    // Activate the clicked button
+                    clickedButton.classList.add('active', 'bg-blue-600', 'shadow-md');
+
+                    // Find and activate the corresponding content section
+                    const activeContent = document.getElementById(tabId);
+                    if (activeContent) {
+                        // Make the content visible and trigger the fade-in animation
+                        activeContent.classList.add('active');
+                        // Use a small delay with setTimeout to ensure the transition is triggered correctly
+                        setTimeout(() => {
+                            activeContent.classList.add('opacity-100');
+                        }, 10);
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+	
+
+
 	</body>
 </html>
+
 
 
 
