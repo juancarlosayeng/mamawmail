@@ -126,22 +126,6 @@
 		      font-size: 1.2em;
 		      color: #ffd166;
 		    }	 
-			#navB > ul > li > ul,
-	        #navB > ul > li > ul > li > ul {
-	            display: none;
-	            opacity: 0;
-	            transform: translateY(-10px);
-	            transition: opacity 0.3s ease-in, transform 0.3s ease-in;
-	            list-style-type: none; /* Removes bullet points */
-	        }
-	
-	        #navB > ul > li:hover > ul,
-	        #navB > ul > li > ul > li:hover > ul {
-	            display: block;
-	            opacity: 1;
-	            transform: translateY(0);
-	        }
-
 		</style>
 </head>
 <body class="is-preload">
@@ -1085,6 +1069,7 @@ fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
 
 	</body>
 </html>
+
 
 
 
