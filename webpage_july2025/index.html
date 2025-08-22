@@ -712,10 +712,6 @@
 
 
 
-
-
-
-
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
@@ -724,350 +720,303 @@
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/main2.js"></script>
 			<script>
-const canvas = document.getElementById("routingPathCanvas");
-const ctx = canvas.getContext("2d");
-const cx = canvas.width / 2;
-const cy = canvas.height / 2;
-const N = 10;
-const fanOut = 3;
-const maxHops = 4;
-let nodes = [];
-let edges = [];
-let nodeColors = [];
-const colorPalette = ["#e74c3c", "#3498db", "#f1c40f", "#2ecc71", "#9b59b6", "#1abc9c", "#e67e22", "#34495e", "#7f8c8d", "#ff69b4"];
-let pathSet = new Set();
-
-function drawNetwork() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let [from, to] of edges) {
-    ctx.beginPath();
-    ctx.moveTo(from.x, from.y);
-    ctx.lineTo(to.x, to.y);
-    ctx.strokeStyle = nodeColors[from.id] || "rgba(0, 150, 0, 0.5)";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-  }
-  for (let node of nodes) {
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, 10, 0, 2 * Math.PI);
-    ctx.fillStyle = nodeColors[node.id] || "#27ae60";
-    ctx.fill();
-    ctx.fillStyle = "white";
-    ctx.font = "10px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText(node.id, node.x, node.y + 3);
-  }
-}
-
-function simulateFractalSaturation() {
-  const countdownEl = document.getElementById("countdown-message");
-  countdownEl.innerText = "Calculating routes...";
-  nodes = [];
-  edges = [];
-  pathSet.clear();
-
-  const angleStep = (2 * Math.PI) / N;
-  for (let i = 0; i < N; i++) {
-    const angle = angleStep * i;
-    nodes.push({ id: i, x: cx + 220 * Math.cos(angle), y: cy + 220 * Math.sin(angle) });
-    nodeColors[i] = colorPalette[i % colorPalette.length];
-  }
-
-  const total = N * (N - 1);
-  let currentOrigin = 0;
-  let queue = [];
-  let visited = new Set();
-
-  function step() {
-    if (queue.length === 0) {
-      if (currentOrigin >= N) {
-        document.getElementById("path-count").innerText = `Unique paths discovered (i → j): ${pathSet.size} / ${total} required`;
-        document.getElementById("saturation-bar").value = pathSet.size;
-        document.getElementById("saturation-bar").max = total;
-        countdownEl.innerText = pathSet.size === total
-          ? "✅ Saturation complete: All paths are known."
-          : `🕒 Waiting for saturation... (${pathSet.size}/${total} paths)`;
-        drawNetwork();
-        return;
-      }
-      visited = new Set([currentOrigin]);
-      queue = [[currentOrigin, [currentOrigin]]];
-      currentOrigin++;
-    }
-
-    const [current, path] = queue.shift();
-    if (path.length > maxHops + 1) {
-      step();
-      return;
-    }
-
-    const candidates = [];
-    for (let i = 0; i < N; i++) {
-      if (!visited.has(i)) candidates.push(i);
-    }
-    for (let i = 0; i < Math.min(fanOut, candidates.length); i++) {
-      const next = candidates.splice(Math.floor(Math.random() * candidates.length), 1)[0];
-      visited.add(next);
-      const newPath = [...path, next];
-      edges.push([nodes[current], nodes[next]]);
-      pathSet.add(`${path[0]}->${next}`);
-      queue.push([next, newPath]);
-    }
-
-    document.getElementById("path-count").innerText = `Unique paths discovered (i → j): ${pathSet.size} / ${total} required`;
-    document.getElementById("saturation-bar").value = pathSet.size;
-    countdownEl.innerText = pathSet.size === total
-      ? "✅ Saturation complete: All paths are known."
-      : `🕒 Waiting for saturation... (${pathSet.size}/${total} paths)`;
-
-    drawNetwork();
-    requestAnimationFrame(step);
-  }
-
-  requestAnimationFrame(step);
-}
-
-function restartFractalSimulation() {
-  simulateFractalSaturation();
-}
-
-// Start on load
-//simulateFractalSaturation();
-</script>
-
-
-
-
-
-
-<!-- Swarm Growth -->
-<script>
-//let ctx2 = document.getElementById('fractalSaturationCanvas').getContext('2d');
-
-
-function startSwarmGrowth() {
-  const canvas2 = document.getElementById('fractalSaturationCanvas');
-  const ctx2 = canvas2.getContext('2d');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  let dots = [{ x: 200, y: 200, r: 4 }];
-  let growthSteps = 6;
-  let step = 0;
-
-  function grow() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let dot of dots) {
-      ctx.beginPath();
-      ctx.arc(dot.x, dot.y, dot.r, 0, 2 * Math.PI);
-      ctx.fillStyle = 'aqua';
-      ctx.fill();
-    }
-
-    if (step < growthSteps) {
-      let newDots = [];
-      for (let dot of dots) {
-        for (let i = 0; i < 3; i++) {
-          let angle = Math.random() * Math.PI * 2;
-          let dist = 40;
-          newDots.push({
-            x: dot.x + Math.cos(angle) * dist,
-            y: dot.y + Math.sin(angle) * dist,
-            r: 3
-          });
-        }
-      }
-      dots = newDots;
-      step++;
-      setTimeout(grow, 600);
-    }
-  }
-
-  grow();
-}
-</script>
-
-<!-- Static Per-Hop Animation (already working in canvas) -->
-<!-- No changes needed here; your "startPerHopAnimation" already works and is bound. -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-function startSwarmGrowth() {
-console.log("Simulating Fractal Saturation...");
-  const canvas = document.getElementById('swarmGrowthCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  let dots = [{ x: 200, y: 200, r: 4 }];
-  let growthSteps = 6;
-  let step = 0;
-
-  function grow() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let dot of dots) {
-      ctx.beginPath();
-      ctx.arc(dot.x, dot.y, dot.r, 0, 2 * Math.PI);
-      ctx.fillStyle = 'aqua';
-      ctx.fill();
-    }
-
-    if (step < growthSteps) {
-      let newDots = [];
-      for (let dot of dots) {
-        for (let i = 0; i < 3; i++) {
-          let angle = Math.random() * Math.PI * 2;
-          let dist = 40;
-          newDots.push({
-            x: dot.x + Math.cos(angle) * dist,
-            y: dot.y + Math.sin(angle) * dist,
-            r: 3
-          });
-        }
-      }
-      dots = newDots;
-      step++;
-      setTimeout(grow, 600);
-    }
-  }
-
-  grow();
-}
-
-function startPerHopAnimation() {
-  const canvas = document.getElementById('perHopCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  let nodes = [{ x: 200, y: 200 }];
-  let links = [];
-  let hop = 0;
-  const hops = 10;
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'aqua';
-    for (let node of nodes) {
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.strokeStyle = '#0ff5';
-    for (let link of links) {
-      ctx.beginPath();
-      ctx.moveTo(link.from.x, link.from.y);
-      ctx.lineTo(link.to.x, link.to.y);
-      ctx.stroke();
-    }
-  }
-
-  function expand() {
-    if (hop < 4) {
-      let newNodes = [];
-      for (let node of nodes) {
-        for (let i = 0; i < 3; i++) {
-          let angle = Math.random() * Math.PI * 2;
-          let dist = 40;
-          let newNode = {
-            x: node.x + Math.cos(angle) * dist,
-            y: node.y + Math.sin(angle) * dist
-          };
-          links.push({ from: node, to: newNode });
-          newNodes.push(newNode);
-        }
-      }
-      nodes = newNodes;
-    } else if (hop < hops) {
-      let newNodes = [];
-      for (let node of nodes) {
-        let angle = Math.random() * Math.PI * 2;
-        let dist = 20;
-        let newNode = {
-          x: node.x + Math.cos(angle) * dist,
-          y: node.y + Math.sin(angle) * dist
-        };
-        links.push({ from: node, to: newNode });
-        newNodes.push(newNode);
-      }
-      nodes = newNodes;
-    }
-
-    draw();
-    hop++;
-    if (hop < hops) {
-      setTimeout(expand, 500);
-    }
-  }
-
-  expand();
-}
-</script>
-
-
-<script>
-function onVisible(elementId, callback) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        callback();
-        observer.unobserve(entry.target); // only trigger once
-      }
-    });
-  });
-  const el = document.getElementById(elementId);
-  if (el) observer.observe(el);
-}
-
-onVisible('routingPathCanvas', simulateFractalSaturation);
-//onVisible('fractalSaturationCanvas', startSwarmGrowth);
-window.onload = () => {startSwarmGrowth();};
-onVisible('perHopCanvas', startPerHopAnimation);
-</script>
-
-
-<!--
- <div id="visitorCounter">Unique IP visitors: <span id="visitor-count">...</span></div>
--->
-
-	
-<script>
-// Set your own unique namespace & key
-const namespace = 'mamawmail';
-const key = 'webpage_july2025';
-
-fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('visitor-count').textContent = data.value;
-  });
-</script>
-
-
-
-
-
-
+				const canvas = document.getElementById("routingPathCanvas");
+				const ctx = canvas.getContext("2d");
+				const cx = canvas.width / 2;
+				const cy = canvas.height / 2;
+				const N = 10;
+				const fanOut = 3;
+				const maxHops = 4;
+				let nodes = [];
+				let edges = [];
+				let nodeColors = [];
+				const colorPalette = ["#e74c3c", "#3498db", "#f1c40f", "#2ecc71", "#9b59b6", "#1abc9c", "#e67e22", "#34495e", "#7f8c8d", "#ff69b4"];
+				let pathSet = new Set();
+				
+				function drawNetwork() {
+						  ctx.clearRect(0, 0, canvas.width, canvas.height);
+						  for (let [from, to] of edges) {
+						    ctx.beginPath();
+						    ctx.moveTo(from.x, from.y);
+						    ctx.lineTo(to.x, to.y);
+						    ctx.strokeStyle = nodeColors[from.id] || "rgba(0, 150, 0, 0.5)";
+						    ctx.lineWidth = 2;
+						    ctx.stroke();
+						  }
+						  for (let node of nodes) {
+						    ctx.beginPath();
+						    ctx.arc(node.x, node.y, 10, 0, 2 * Math.PI);
+						    ctx.fillStyle = nodeColors[node.id] || "#27ae60";
+						    ctx.fill();
+						    ctx.fillStyle = "white";
+						    ctx.font = "10px Arial";
+						    ctx.textAlign = "center";
+						    ctx.fillText(node.id, node.x, node.y + 3);
+						  }
+				}
+
+				function simulateFractalSaturation() {
+						  const countdownEl = document.getElementById("countdown-message");
+						  countdownEl.innerText = "Calculating routes...";
+						  nodes = [];
+						  edges = [];
+						  pathSet.clear();
+				
+						  const angleStep = (2 * Math.PI) / N;
+						  for (let i = 0; i < N; i++) {
+						    const angle = angleStep * i;
+						    nodes.push({ id: i, x: cx + 220 * Math.cos(angle), y: cy + 220 * Math.sin(angle) });
+						    nodeColors[i] = colorPalette[i % colorPalette.length];
+				}
+
+			  	const total = N * (N - 1);
+			  	let currentOrigin = 0;
+			  	let queue = [];
+			  	let visited = new Set();
+
+				function step() {
+				    if (queue.length === 0) {
+				      if (currentOrigin >= N) {
+				        document.getElementById("path-count").innerText = `Unique paths discovered (i → j): ${pathSet.size} / ${total} required`;
+				        document.getElementById("saturation-bar").value = pathSet.size;
+				        document.getElementById("saturation-bar").max = total;
+				        countdownEl.innerText = pathSet.size === total
+				          ? "✅ Saturation complete: All paths are known."
+				          : `🕒 Waiting for saturation... (${pathSet.size}/${total} paths)`;
+				        drawNetwork();
+				        return;
+				      }
+				      visited = new Set([currentOrigin]);
+				      queue = [[currentOrigin, [currentOrigin]]];
+				      currentOrigin++;
+				    }				
+				    const [current, path] = queue.shift();
+				    if (path.length > maxHops + 1) {
+				      step();
+				      return;
+				    }				
+				    const candidates = [];
+				    for (let i = 0; i < N; i++) {
+				      if (!visited.has(i)) candidates.push(i);
+				    }
+				    for (let i = 0; i < Math.min(fanOut, candidates.length); i++) {
+				      const next = candidates.splice(Math.floor(Math.random() * candidates.length), 1)[0];
+				      visited.add(next);
+				      const newPath = [...path, next];
+				      edges.push([nodes[current], nodes[next]]);
+				      pathSet.add(`${path[0]}->${next}`);
+				      queue.push([next, newPath]);
+				    }				
+				    document.getElementById("path-count").innerText = `Unique paths discovered (i → j): ${pathSet.size} / ${total} required`;
+				    document.getElementById("saturation-bar").value = pathSet.size;
+				    countdownEl.innerText = pathSet.size === total
+				      ? "✅ Saturation complete: All paths are known."
+				      : `🕒 Waiting for saturation... (${pathSet.size}/${total} paths)`;
+				
+				    drawNetwork();
+				    requestAnimationFrame(step);
+				  }				
+				  requestAnimationFrame(step);
+				}
+
+				function restartFractalSimulation() {
+				  simulateFractalSaturation();
+				}
+				//simulateFractalSaturation();
+			</script>
+
+			<!-- Swarm Growth -->
+			<script>
+			//let ctx2 = document.getElementById('fractalSaturationCanvas').getContext('2d');
+			function startSwarmGrowth() {
+			  const canvas2 = document.getElementById('fractalSaturationCanvas');
+			  const ctx2 = canvas2.getContext('2d');
+			  if (!canvas) return;
+			  const ctx = canvas.getContext('2d');
+			  ctx.clearRect(0, 0, canvas.width, canvas.height);
+			
+			  let dots = [{ x: 200, y: 200, r: 4 }];
+			  let growthSteps = 6;
+			  let step = 0;
+			
+			  function grow() {
+			    ctx.clearRect(0, 0, canvas.width, canvas.height);
+			    for (let dot of dots) {
+			      ctx.beginPath();
+			      ctx.arc(dot.x, dot.y, dot.r, 0, 2 * Math.PI);
+			      ctx.fillStyle = 'aqua';
+			      ctx.fill();
+			    }
+			
+			    if (step < growthSteps) {
+			      let newDots = [];
+			      for (let dot of dots) {
+			        for (let i = 0; i < 3; i++) {
+			          let angle = Math.random() * Math.PI * 2;
+			          let dist = 40;
+			          newDots.push({
+			            x: dot.x + Math.cos(angle) * dist,
+			            y: dot.y + Math.sin(angle) * dist,
+			            r: 3
+			          });
+			        }
+			      }
+			      dots = newDots;
+			      step++;
+			      setTimeout(grow, 600);
+			    }
+			  }			
+			  grow();
+			}
+			</script>
+
+			<script>
+				function startSwarmGrowth() {
+				console.log("Simulating Fractal Saturation...");
+				  const canvas = document.getElementById('swarmGrowthCanvas');
+				  if (!canvas) return;
+				  const ctx = canvas.getContext('2d');
+				  ctx.clearRect(0, 0, canvas.width, canvas.height);
+				
+				  let dots = [{ x: 200, y: 200, r: 4 }];
+				  let growthSteps = 6;
+				  let step = 0;
+				
+				  function grow() {
+				    ctx.clearRect(0, 0, canvas.width, canvas.height);
+				    for (let dot of dots) {
+				      ctx.beginPath();
+				      ctx.arc(dot.x, dot.y, dot.r, 0, 2 * Math.PI);
+				      ctx.fillStyle = 'aqua';
+				      ctx.fill();
+				    }				
+				    if (step < growthSteps) {
+				      let newDots = [];
+				      for (let dot of dots) {
+				        for (let i = 0; i < 3; i++) {
+				          let angle = Math.random() * Math.PI * 2;
+				          let dist = 40;
+				          newDots.push({
+				            x: dot.x + Math.cos(angle) * dist,
+				            y: dot.y + Math.sin(angle) * dist,
+				            r: 3
+				          });
+				        }
+				      }
+				      dots = newDots;
+				      step++;
+				      setTimeout(grow, 600);
+				    }
+				  }				
+				  grow();
+				}
+
+				function startPerHopAnimation() {
+				  const canvas = document.getElementById('perHopCanvas');
+				  if (!canvas) return;
+				  const ctx = canvas.getContext('2d');
+				  ctx.clearRect(0, 0, canvas.width, canvas.height);
+				
+				  let nodes = [{ x: 200, y: 200 }];
+				  let links = [];
+				  let hop = 0;
+				  const hops = 10;
+				
+				  function draw() {
+				    ctx.clearRect(0, 0, canvas.width, canvas.height);
+				    ctx.fillStyle = 'aqua';
+				    for (let node of nodes) {
+				      ctx.beginPath();
+				      ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+				      ctx.fill();
+				    }
+				    ctx.strokeStyle = '#0ff5';
+				    for (let link of links) {
+				      ctx.beginPath();
+				      ctx.moveTo(link.from.x, link.from.y);
+				      ctx.lineTo(link.to.x, link.to.y);
+				      ctx.stroke();
+				    }
+				  }
+				
+				  function expand() {
+				    if (hop < 4) {
+				      let newNodes = [];
+				      for (let node of nodes) {
+				        for (let i = 0; i < 3; i++) {
+				          let angle = Math.random() * Math.PI * 2;
+				          let dist = 40;
+				          let newNode = {
+				            x: node.x + Math.cos(angle) * dist,
+				            y: node.y + Math.sin(angle) * dist
+				          };
+				          links.push({ from: node, to: newNode });
+				          newNodes.push(newNode);
+				        }
+				      }
+				      nodes = newNodes;
+				    } else if (hop < hops) {
+				      let newNodes = [];
+				      for (let node of nodes) {
+				        let angle = Math.random() * Math.PI * 2;
+				        let dist = 20;
+				        let newNode = {
+				          x: node.x + Math.cos(angle) * dist,
+				          y: node.y + Math.sin(angle) * dist
+				        };
+				        links.push({ from: node, to: newNode });
+				        newNodes.push(newNode);
+				      }
+				      nodes = newNodes;
+				    }				
+				    draw();
+				    hop++;
+				    if (hop < hops) {
+				      setTimeout(expand, 500);
+				    }
+				  }				
+				  expand();
+				}
+			</script>
+
+			<script>
+			function onVisible(elementId, callback) {
+			  const observer = new IntersectionObserver((entries) => {
+			    entries.forEach(entry => {
+			      if (entry.isIntersecting) {
+			        callback();
+			        observer.unobserve(entry.target); // only trigger once
+			      }
+			    });
+			  });
+			  const el = document.getElementById(elementId);
+			  if (el) observer.observe(el);
+			}			
+			onVisible('routingPathCanvas', simulateFractalSaturation);
+			//onVisible('fractalSaturationCanvas', startSwarmGrowth);
+			window.onload = () => {startSwarmGrowth();};
+			onVisible('perHopCanvas', startPerHopAnimation);
+			</script>
+			<!--
+			 <div id="visitorCounter">Unique IP visitors: <span id="visitor-count">...</span></div>
+			-->
+			<script>
+			// Set your own unique namespace & key
+			const namespace = 'mamawmail';
+			const key = 'webpage_july2025';
+			
+			fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+			  .then(res => res.json())
+			  .then(data => {
+			    document.getElementById('visitor-count').textContent = data.value;
+			  });
+			</script>
 	
 
 
 	</body>
 </html>
+
 
 
 
