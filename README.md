@@ -3,6 +3,7 @@
 ---
 # UPDATE SUMMARY
 UPDATED: August 24 2025
+
 Part of the Mamawmail Research Initiative – practical implementation of the system.
 ----------------------------------------------------------------------
 ## Mamawmail Research Initiative – License Overview
